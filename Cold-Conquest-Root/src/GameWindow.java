@@ -1,15 +1,17 @@
 import GameComponents.GameObjects.Landscape.IceTile;
 import GameComponents.GameObjects.PixelObject;
+import GameComponents.GameObjects.TileMap;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class GameWindow extends JFrame {
-    ArrayList<PixelObject> objects = new ArrayList<>();
+    ArrayList<TileMap> tileMaps = new ArrayList<>();
 
     public void setup(){
-        objects.add(new IceTile());
+        tileMaps.add(new TileMap());
+        tileMaps.get(0).FillMap(new IceTile());
 
         setTitle("Cold Conquest");
         getContentPane().setBackground(Color.BLUE);
@@ -22,12 +24,13 @@ public class GameWindow extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(20, 100, 100, 100);
 
-        for(PixelObject o : objects){
-            o.drawSprite(g2d);
+        for(TileMap m : tileMaps){
+            m.DrawTiles(g2d);
         }
+
+        System.out.println("Frame drew");
+        System.out.println(tileMaps.get(0).getTile(2, 5).getPos()[0]);
     }
 
     public void run(){

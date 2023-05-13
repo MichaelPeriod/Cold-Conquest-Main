@@ -8,19 +8,24 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class PixelObject extends GameObject implements IDrawable {
-    //Read from a file and draw in a pixel art format
+    //Positional variables
+    //Make pixel size dynamic
     private int posX, posY, pixelSize;
 
     private String spriteLocation; //Make into sprite sheet later
     private BufferedImage sprite; //Convert to 2d array list for animation
 
+    //Set sprite and load it
     public PixelObject(String spriteLocation){
         this.spriteLocation = spriteLocation;
         this.sprite = IDrawable.loadSprite(this.spriteLocation);
     }
 
+    //Draw the sprite every call
     @Override
     public void drawSprite(Graphics2D g2d){
+        //TODO Error in drawing sprite from tilemap, trying to find source
+        System.out.println("Sprite drew");
         //Calculate x and y pos
         final int initX = getPosX();
         final int initY = getPosY();
@@ -59,6 +64,18 @@ public abstract class PixelObject extends GameObject implements IDrawable {
 
     public void setPosY(int posY) {
         this.posY = posY;
+    }
+
+    public int[] getPos(){
+        int[] pos = new int[2];
+        pos[0] = getPosX();
+        pos[1] = getPosY();
+        return pos;
+    }
+
+    public void setPos(int x, int y){
+        setPosX(x);
+        setPosY(y);
     }
 
     public BufferedImage getSprite() {

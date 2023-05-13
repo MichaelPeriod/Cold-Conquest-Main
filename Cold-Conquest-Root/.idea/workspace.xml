@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/IDrawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/TileMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/Landscape/IceTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Landscape/IceTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/TiledObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/TiledObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +84,8 @@
       <workItem from="1683669616200" duration="1466000" />
       <workItem from="1683681249124" duration="1018000" />
       <workItem from="1683905731749" duration="5316000" />
-      <workItem from="1683992631147" duration="4311000" />
+      <workItem from="1683992631147" duration="5656000" />
+      <workItem from="1684014372398" duration="3866000" />
     </task>
     <servers />
   </component>
