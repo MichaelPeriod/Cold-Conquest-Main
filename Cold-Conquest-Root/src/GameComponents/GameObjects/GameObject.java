@@ -1,4 +1,4 @@
-package GameObjects;
+package GameComponents.GameObjects;
 
 public abstract class GameObject {
     //Includes all objects which only excludes IU

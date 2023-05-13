@@ -1,6 +1,6 @@
-package GameObjects.Landscape;
+package GameComponents.GameObjects.Landscape;
 
-import GameObjects.TiledObject;
+import GameComponents.GameObjects.TiledObject;
 
 public class IceTile extends TiledObject {
     private static String fileLocation = "ice-sheet.png";
