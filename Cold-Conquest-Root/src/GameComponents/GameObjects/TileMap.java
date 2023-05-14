@@ -1,16 +1,17 @@
 package GameComponents.GameObjects;
 
+import GameComponents.GameObjects.Landscape.IceTile;
+
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TileMap {
-    final private static int DEFAULT_MAP_SIZE = 10;
+    final private static int DEFAULT_MAP_SIZE = 2;
     private ArrayList<ArrayList<TiledObject>> tiles; //Read from 0, 0 being top center tile
 
 
     public TileMap(){
-        this(50);
+        this(DEFAULT_MAP_SIZE);
     }
 
     public TileMap(int mapSize){
@@ -23,10 +24,10 @@ public class TileMap {
         }
     }
 
-    public void FillMap(TiledObject obj){
+    public void FillIceSheet(){
         for(int i = 0; i < tiles.size(); i++){
             for(int j = 0; j < tiles.get(0).size(); j++){
-                SetTile(obj, i, j);
+                SetTile(new IceTile(), i, j);
             }
         }
     }
@@ -38,7 +39,7 @@ public class TileMap {
         }
 
         tiles.get(x).set(y, obj);
-        getTile(x, y).setPos(100, 100);
+        getTile(x, y).setPos(100 + 50 * x, 100 + 50 * y);
     }
 
     private static boolean isInBounds(ArrayList<ArrayList<TiledObject>> tileMap, int x, int y){
@@ -63,8 +64,22 @@ public class TileMap {
     public void DrawTiles(Graphics2D g){
         for(ArrayList<TiledObject> row : tiles){
             for(TiledObject tile : row){
-                tile.drawSprite(g);
+                if(tile != null)
+                    tile.drawSprite(g);
             }
         }
+    }
+
+    @Override
+    public String toString(){
+        String sBuilder = "";
+        for(ArrayList<TiledObject> row : tiles){
+            for(TiledObject tile : row){
+                sBuilder += tile.toString() + " ";
+            }
+            sBuilder += "\n";
+        }
+        sBuilder += "End";
+        return sBuilder;
     }
 }

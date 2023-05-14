@@ -1,4 +1,3 @@
-import GameComponents.GameObjects.Landscape.IceTile;
 import GameComponents.GameObjects.PixelObject;
 import GameComponents.GameObjects.TileMap;
 
@@ -6,19 +5,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GameWindow extends JFrame {
+public class GameWindow extends JPanel implements Runnable {
+    public final int screenWidth = 854;
+    public final int screenHeight = 480;
+    public final int FPS = 60;
+
     ArrayList<TileMap> tileMaps = new ArrayList<>();
+    ArrayList<PixelObject> unorganizedObjects = new ArrayList<>();
+
+    public GameWindow(){
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setBackground(new Color(54, 197, 244));
+        this.setDoubleBuffered(true);
+        //this.addKeyListener(keyH);
+        //this.addMouseListener(keyH);
+        //this.addMouseMotionListener(keyH);
+        this.setFocusable(true);
+    }
 
     public void setup(){
         tileMaps.add(new TileMap());
-        tileMaps.get(0).FillMap(new IceTile());
+        tileMaps.get(0).FillIceSheet();
 
-        setTitle("Cold Conquest");
-        getContentPane().setBackground(Color.BLUE);
-        setSize(848, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
+        Thread gameThread = new Thread(this);
+        gameThread.start();
     }
 
     public void paint(Graphics g) {
@@ -29,11 +39,30 @@ public class GameWindow extends JFrame {
             m.DrawTiles(g2d);
         }
 
-        System.out.println("Frame drew");
-        System.out.println(tileMaps.get(0).getTile(2, 5).getPos()[0]);
+        for(PixelObject o : unorganizedObjects){
+            o.drawSprite(g2d);
+        }
     }
 
+    @Override
     public void run(){
+        double drawInterval = 1000000000/(float)FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        long timer;
 
+        while(true){
+            currentTime = System.nanoTime();
+
+            timer = currentTime - lastTime;
+            delta += timer / drawInterval;
+            lastTime = currentTime;
+
+            if(delta <= 1) continue;
+
+            repaint();
+            delta--;
+        }
     }
 }

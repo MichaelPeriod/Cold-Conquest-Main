@@ -1,16 +1,15 @@
 package GameComponents.GameObjects;
 
 import GameComponents.IDrawable;
-import org.jetbrains.annotations.NotNull;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class PixelObject extends GameObject implements IDrawable {
     //Positional variables
     //Make pixel size dynamic
-    private int posX, posY, pixelSize;
+    private int posX, posY;
+    private static int pixelSize = 4;
 
     private String spriteLocation; //Make into sprite sheet later
     private BufferedImage sprite; //Convert to 2d array list for animation
@@ -24,8 +23,6 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     //Draw the sprite every call
     @Override
     public void drawSprite(Graphics2D g2d){
-        //TODO Error in drawing sprite from tilemap, trying to find source
-        System.out.println("Sprite drew");
         //Calculate x and y pos
         final int initX = getPosX();
         final int initY = getPosY();
@@ -92,5 +89,10 @@ public abstract class PixelObject extends GameObject implements IDrawable {
 
     public void setPixelSize(int pixelSize) {
         this.pixelSize = pixelSize;
+    }
+
+    @Override
+    public String toString(){
+        return this.spriteLocation;
     }
 }
