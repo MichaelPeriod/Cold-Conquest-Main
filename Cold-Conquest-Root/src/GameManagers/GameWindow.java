@@ -1,5 +1,8 @@
+package GameManagers;
+
 import GameComponents.GameObjects.PixelObject;
 import GameComponents.GameObjects.TileMap;
+import GameComponents.GameObjects.Tiles.TestTile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +12,7 @@ public class GameWindow extends JPanel implements Runnable {
     public final int screenWidth = 854;
     public final int screenHeight = 480;
     public final int FPS = 60;
+    public final int PIXEL_SIZE = 4;
 
     ArrayList<TileMap> tileMaps = new ArrayList<>();
     ArrayList<PixelObject> unorganizedObjects = new ArrayList<>();
@@ -24,7 +28,7 @@ public class GameWindow extends JPanel implements Runnable {
     }
 
     public void setup(){
-        tileMaps.add(new TileMap());
+        tileMaps.add(new TileMap(this));
         tileMaps.get(0).FillIceSheet();
 
         Thread gameThread = new Thread(this);

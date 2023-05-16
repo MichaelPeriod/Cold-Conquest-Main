@@ -1,12 +1,12 @@
-package GameComponents.GameObjects.Landscape;
+package GameComponents.GameObjects.Tiles.Landscape;
 
-import GameComponents.GameObjects.TiledObject;
+import GameComponents.GameObjects.Tiles.TiledObject;
 
 public class IceTile extends TiledObject {
     private static String fileLocation = "ice-sheet.png";
 
-    public IceTile(){
-        super(fileLocation);
+    public IceTile(int pixelSize){
+        super(fileLocation, pixelSize);
     }
 
     @Override

@@ -1,3 +1,5 @@
+package GameManagers;
+
 import javax.swing.*;
 
 public class MainRunner {
