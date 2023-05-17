@@ -3,10 +3,6 @@ package GameComponents.GameObjects.Tiles;
 public class TestTile extends TiledObject {
     private static String fileLocation = "test-block.png";
 
-    public TestTile(int pixelSize){
-        super(fileLocation, pixelSize);
-    }
-
     @Override
     public void OnStart() {
 
@@ -19,6 +15,16 @@ public class TestTile extends TiledObject {
 
     @Override
     public void LateUpdate() {
+
+    }
+
+    @Override
+    public int[] getSprite() {
+        return new int[0];
+    }
+
+    @Override
+    public void setSprite(int[] sprite) {
 
     }
 }

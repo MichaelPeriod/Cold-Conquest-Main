@@ -7,9 +7,5 @@ public abstract class TiledObject extends PixelObject {
 
     private int tileX, tileY;
 
-    public TiledObject(String spriteLocation, int pixelSize){
-        super(spriteLocation,pixelSize);
-    }
-
     //Should make a tilemap object to calculate
 }

@@ -1,14 +1,20 @@
 package GameComponents.GameObjects;
 
 import GameComponents.IDrawable;
+import GameComponents.SpriteRenderer;
 
 import java.awt.image.BufferedImage;
 
 public abstract class PixelObject extends GameObject implements IDrawable {
     //Positional variables
     //Make pixel size dynamic
-    private int[] spriteBox;
-    private String spriteLocation; //Make into sprite sheet later
+    private int[] spriteBox = new int[4];
+
+    public abstract int[] getSprite();
+    public abstract void setSprite(int[] sprite);
+    public void loadSprite(String spriteLocation){
+        setSprite(SpriteRenderer.loadSpriteToArray(spriteLocation));
+    }
 
     @Override
     public int[] getSpriteBox() {
@@ -52,7 +58,8 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     }
 
     public int[] getPos(){
-        return new int[2]{getPosX(), getPosY()};
+        int[] toReturn = {getPosX(), getPosY()};
+        return toReturn;
     }
 
     public void setPos(int[] pos){
@@ -64,7 +71,8 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     }
 
     public int[] getDimensions(){
-        return new int[2]{getWidth(), getHeight()};
+        int[] toReturn = {getWidth(), getHeight()};
+        return toReturn;
     }
 
     public void setDimensions(int[] dim){
@@ -73,24 +81,5 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     public void setDimensions(int x, int y){
         setWidth(x);
         setHeight(y);
-    }
-
-    //TODO Finish renderer work
-
-    public BufferedImage getSprite() {
-        return this.sprite;
-    }
-
-    public void setSprite(BufferedImage sprite) {
-        this.sprite = sprite;
-    }
-
-    public int getPixelSize() {
-        return this.pixelSize;
-    }
-
-    @Override
-    public String toString(){
-        return this.spriteLocation;
     }
 }

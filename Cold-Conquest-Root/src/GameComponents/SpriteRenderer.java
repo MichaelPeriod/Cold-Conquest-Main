@@ -34,6 +34,10 @@ public class SpriteRenderer {
         }
     }
 
+    public static int[] loadSpriteToArray(@NotNull String spriteLocation){
+        return spriteToIntArray(loadSprite(spriteLocation));
+    }
+
     //Untested
     public static ArrayList<BufferedImage> loadSpriteSheet(@NotNull String spriteSheetLocation, int[] spriteSize){
         try {
@@ -69,6 +73,8 @@ public class SpriteRenderer {
     }
 
     public static int[] spriteToIntArray(BufferedImage sprite){
+        if(sprite == null) return null;
+
         final int TOTAL_PIXELS = sprite.getHeight() * sprite.getWidth();
         int[] pixels = new int[TOTAL_PIXELS * DATA_PER_PIXEL];
         sprite.getData().getPixels(0, 0, sprite.getWidth(), sprite.getHeight(), pixels);
@@ -85,11 +91,11 @@ public class SpriteRenderer {
         final int initX = spriteBox[0];
         final int initY = spriteBox[1];
         final int PIXEL_SIZE = getPixelSize();
-        final int DATA_PER_WIDTH = DATA_PER_PIXEL * spriteBox[3];
-        final int TOTAL_PIXELS = DATA_PER_WIDTH * spriteBox[4];
+        final int DATA_PER_WIDTH = DATA_PER_PIXEL * spriteBox[2];
+        final int TOTAL_PIXELS = DATA_PER_WIDTH * spriteBox[3];
 
         //Draw pixel
-        for(int i = 0; i < TOTAL_PIXELS * DATA_PER_PIXEL; i += DATA_PER_PIXEL){
+        for(int i = 0; i < TOTAL_PIXELS; i += DATA_PER_PIXEL){
             int xOffset = (i % DATA_PER_WIDTH) / DATA_PER_PIXEL * PIXEL_SIZE;
             int yOffset = Math.floorDiv(i, DATA_PER_WIDTH) * PIXEL_SIZE;
 

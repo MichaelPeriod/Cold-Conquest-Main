@@ -2,6 +2,7 @@ package GameComponents.GameObjects;
 
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.TiledObject;
+import GameComponents.SpriteRenderer;
 import GameManagers.GameWindow;
 import Utilities.Cords;
 
@@ -12,6 +13,7 @@ public class TileMap {
     final int[] startPoint;
     final int[] tileBaseSize;
     final int tileBaseThinkness;
+    final int[] tileSize;
     private GameWindow gw;
     final int pixelSize;
     final private static int DEFAULT_MAP_SIZE = 5;
@@ -22,9 +24,10 @@ public class TileMap {
     }
 
     public TileMap(int mapSize, GameWindow gw){
-        this.pixelSize = gw.PIXEL_SIZE;
+        this.pixelSize = SpriteRenderer.getPixelSize();
         this.tileBaseSize = new int[]{pixelSize * 32, pixelSize * 20};
-        this.tileBaseThinkness = 5;
+        this.tileBaseThinkness = 5 * pixelSize;
+        this.tileSize = new int[]{32, 32};
         this.gw = gw;
 
         tiles = new ArrayList<>(mapSize);
@@ -41,7 +44,7 @@ public class TileMap {
     public void FillIceSheet(){
         for(int i = 0; i < tiles.size(); i++){
             for(int j = 0; j < tiles.get(0).size(); j++){
-                SetTile(new IceTile(pixelSize), i, j);
+                SetTile(new IceTile(), i, j);
             }
         }
     }
@@ -54,6 +57,7 @@ public class TileMap {
 
         tiles.get(x).set(y, obj);
         getTile(x, y).setPos(Cords.mapToWorld(this, x, y));
+        getTile(x, y).setDimensions(tileSize);
     }
 
     private static boolean isInBounds(ArrayList<ArrayList<TiledObject>> tileMap, int x, int y){
@@ -80,9 +84,10 @@ public class TileMap {
             }
         }
 
-        int[] start = Cords.worldToMapCenter(this, 0, 0);
-        g.setColor(Color.BLACK);
-        g.fillOval(start[0] - 10, start[1] - 10, 20, 20);
+        //int[] start = Cords.worldToMap(this, 0, 400);
+        //int[] start = {400, 400};
+        //g.setColor(Color.BLACK);
+        //g.fillOval(start[0] - 10, start[1] - 10, 20, 20);
     }
 
     @Override
@@ -99,9 +104,9 @@ public class TileMap {
 
     private int[] calculateStartPoint(int mapSize){
         final int[] windowCenter = {gw.screenWidth / 2, gw.screenHeight / 2};
-        final int tileHeight = tileBaseSize[1];
+        final int tileHeight = tileBaseSize[1] - tileBaseThinkness;
         final int tileWidth = tileBaseSize[0];
-        int[] toReturn = {windowCenter[0] - tileWidth / 2, -((mapSize - 1)/2 * tileHeight) + windowCenter[1]};
+        int[] toReturn = {windowCenter[0] - tileWidth / 2, -(mapSize * tileHeight / 2) + windowCenter[1]};
         return toReturn;
     }
 

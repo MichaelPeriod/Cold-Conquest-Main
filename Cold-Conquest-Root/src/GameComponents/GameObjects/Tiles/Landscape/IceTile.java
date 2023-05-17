@@ -1,12 +1,15 @@
 package GameComponents.GameObjects.Tiles.Landscape;
 
 import GameComponents.GameObjects.Tiles.TiledObject;
+import GameComponents.SpriteRenderer;
 
 public class IceTile extends TiledObject {
     private static String fileLocation = "ice-sheet.png";
+    private static int[] spriteArray = null;
 
-    public IceTile(int pixelSize){
-        super(fileLocation, pixelSize);
+    public IceTile(){
+        if(spriteArray == null)
+            loadSprite(fileLocation);
     }
 
     @Override
@@ -22,5 +25,15 @@ public class IceTile extends TiledObject {
     @Override
     public void LateUpdate() {
 
+    }
+
+    @Override
+    public int[] getSprite() {
+        return spriteArray;
+    }
+
+    @Override
+    public void setSprite(int[] sprite) {
+        spriteArray = sprite;
     }
 }
