@@ -2,7 +2,7 @@ package GameManagers;
 
 import GameComponents.GameObjects.PixelObject;
 import GameComponents.GameObjects.TileMap;
-import GameComponents.GameObjects.Tiles.TestTile;
+import GameComponents.GameObjects.Tiles.Infrastructure.Miner.BaseMiner;
 import GameComponents.SpriteRenderer;
 
 import javax.swing.*;
@@ -28,10 +28,16 @@ public class GameWindow extends JPanel implements Runnable {
     }
 
     public void setup(){
+        final int tileMapSize = 5;
         SpriteRenderer.renderer();
 
-        tileMaps.add(new TileMap(this));
+        tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
         tileMaps.get(0).FillIceSheet();
+
+        tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
+
+        tileMaps.get(1).SetTile(new BaseMiner(), 0, 1);
+        tileMaps.get(1).SetTile(new BaseMiner(), 3, 2);
 
         Thread gameThread = new Thread(this);
         gameThread.start();

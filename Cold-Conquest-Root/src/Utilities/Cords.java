@@ -4,6 +4,7 @@ import GameComponents.GameObjects.TileMap;
 
 public class Cords {
     public static int[] mapToWorld(TileMap tm, int x, int y){
+        //When placing tiles the top seems to be sub-pixel off so leaving for now but to keep an eye on
         final int[] sp = tm.getStartPoint();
         final int[] size = tm.getTileBaseSize().clone();
         size[1] -= tm.getTileBaseThinkness();
