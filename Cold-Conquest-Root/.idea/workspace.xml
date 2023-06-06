@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/storage-container-liquid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/storage-container-solid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/storage-containers.ase" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ice-sheet.ase" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ice-sheet.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/test-block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ice-sheet.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/ice-sheet.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/test-block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TestTile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilities/Cords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities/Cords.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +92,7 @@
       <workItem from="1684279009922" duration="7396000" />
       <workItem from="1684700848351" duration="3550000" />
       <workItem from="1685491080905" duration="1461000" />
+      <workItem from="1686011924614" duration="1049000" />
     </task>
     <servers />
   </component>
