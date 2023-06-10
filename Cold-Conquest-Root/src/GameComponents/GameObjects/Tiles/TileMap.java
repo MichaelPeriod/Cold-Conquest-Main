@@ -1,4 +1,4 @@
-package GameComponents.GameObjects;
+package GameComponents.GameObjects.Tiles;
 
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.TiledObject;
@@ -57,7 +57,6 @@ public class TileMap {
 
         tiles.get(x).set(y, obj);
         getTile(x, y).setPos(Cords.mapToWorld(this, x, y));
-        getTile(x, y).setDimensions(tileSize);
     }
 
     private static boolean isInBounds(ArrayList<ArrayList<TiledObject>> tileMap, int x, int y){

@@ -1,6 +1,6 @@
 package Utilities;
 
-import GameComponents.GameObjects.TileMap;
+import GameComponents.GameObjects.Tiles.TileMap;
 
 public class Cords {
     public static int[] mapToWorld(TileMap tm, int x, int y){

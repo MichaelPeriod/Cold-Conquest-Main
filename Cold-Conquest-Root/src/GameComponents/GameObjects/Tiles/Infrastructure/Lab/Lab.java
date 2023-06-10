@@ -1,14 +1,14 @@
-package GameComponents.GameObjects.Tiles.Landscape;
+package GameComponents.GameObjects.Tiles.Infrastructure.Lab;
 
 import GameComponents.GameObjects.Tiles.TiledObject;
-import GameComponents.SpriteRenderer;
 
-public class IceTile extends TiledObject {
-    private static String fileLocation = "ice-sheet.png";
+public class Lab extends TiledObject {
+    private static String fileLocation = "lab.png";
     private static int[] spriteArray = null;
-    final private static int[] spriteDim = {32, 32};
+    final private static int[] spriteDim = {64, 64};
 
-    public IceTile(){
+
+    public Lab(){
         if(spriteArray == null)
             loadSprite(fileLocation);
         setDimensions(spriteDim);

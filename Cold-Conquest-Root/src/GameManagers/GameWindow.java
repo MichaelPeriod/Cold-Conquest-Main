@@ -1,8 +1,12 @@
 package GameManagers;
 
 import GameComponents.GameObjects.PixelObject;
-import GameComponents.GameObjects.TileMap;
+import GameComponents.GameObjects.Tiles.Infrastructure.Lab.Lab;
 import GameComponents.GameObjects.Tiles.Infrastructure.Miner.BaseMiner;
+import GameComponents.GameObjects.Tiles.Infrastructure.SolarPanel.SolarPanel;
+import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerLiquid;
+import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerSolid;
+import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.SpriteRenderer;
 
 import javax.swing.*;
@@ -36,8 +40,11 @@ public class GameWindow extends JPanel implements Runnable {
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
 
-        tileMaps.get(1).SetTile(new BaseMiner(), 0, 1);
-        tileMaps.get(1).SetTile(new BaseMiner(), 3, 2);
+        tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
+        tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
+        tileMaps.get(1).SetTile(new StorageContainerSolid(), 2, 0);
+        tileMaps.get(1).SetTile(new StorageContainerLiquid(), 3, 0);
+        tileMaps.get(1).SetTile(new Lab(), 0, 2);
 
         Thread gameThread = new Thread(this);
         gameThread.start();

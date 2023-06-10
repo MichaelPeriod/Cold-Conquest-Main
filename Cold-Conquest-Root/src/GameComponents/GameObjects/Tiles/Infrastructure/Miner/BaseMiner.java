@@ -5,10 +5,12 @@ import GameComponents.GameObjects.Tiles.TiledObject;
 public class BaseMiner extends TiledObject {
     private static String fileLocation = "miner-base.png";
     private static int[] spriteArray = null;
+    final private static int[] spriteDim = {32, 32};
 
     public BaseMiner(){
         if(spriteArray == null)
             loadSprite(fileLocation);
+        setDimensions(spriteDim);
     }
 
     @Override

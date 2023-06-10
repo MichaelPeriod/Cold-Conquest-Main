@@ -1,14 +1,13 @@
-package GameComponents.GameObjects.Tiles.Landscape;
+package GameComponents.GameObjects.Tiles.Infrastructure.SolarPanel;
 
 import GameComponents.GameObjects.Tiles.TiledObject;
-import GameComponents.SpriteRenderer;
 
-public class IceTile extends TiledObject {
-    private static String fileLocation = "ice-sheet.png";
+public class SolarPanel extends TiledObject {
+    private static String fileLocation = "solar-panels.png";
     private static int[] spriteArray = null;
     final private static int[] spriteDim = {32, 32};
 
-    public IceTile(){
+    public SolarPanel(){
         if(spriteArray == null)
             loadSprite(fileLocation);
         setDimensions(spriteDim);

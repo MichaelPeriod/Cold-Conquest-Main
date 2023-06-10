@@ -13,7 +13,12 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     public abstract int[] getSprite();
     public abstract void setSprite(int[] sprite);
     public void loadSprite(String spriteLocation){
+        loadSprite(spriteLocation, new int[] {32, 32});
+    }
+
+    public void loadSprite(String spriteLocation, int[] dim){
         setSprite(SpriteRenderer.loadSpriteToArray(spriteLocation));
+        setDimensions(dim);
     }
 
     @Override

@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/indicator-concreate.ase" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/indicator-concreate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/indicator-metal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/ship-yard.ase" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/ship-yard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Lab/Lab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/SolarPanel/SolarPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerLiquid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerSolid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/base.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/indicator-metal.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-metal.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/solar-pannels.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/solar-pannels.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utilities/Cords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities/Cords.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/GameComponents/GameObjects/TileMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,6 +113,7 @@
       <workItem from="1685491080905" duration="1461000" />
       <workItem from="1686011924614" duration="1049000" />
       <workItem from="1686100503416" duration="1222000" />
+      <workItem from="1686356456340" duration="4132000" />
     </task>
     <servers />
   </component>
@@ -119,11 +138,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
