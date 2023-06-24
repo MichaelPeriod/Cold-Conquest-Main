@@ -88,19 +88,16 @@ public class SpriteRenderer {
 
     public void drawSprite(Graphics2D g2d, int[] pixels, int[] spriteBox){
         //Calculate x and y pos
-        final int initX = spriteBox[0];
-        final int initY = spriteBox[1];
         final int PIXEL_SIZE = getPixelSize();
-        final int DATA_PER_WIDTH = DATA_PER_PIXEL * spriteBox[2];
-        final int TOTAL_PIXELS = DATA_PER_WIDTH * spriteBox[3];
+        final int initX = spriteBox[0] - spriteBox[2] / 2 * PIXEL_SIZE;
+        final int initY = spriteBox[1] - spriteBox[3] * PIXEL_SIZE;
 
-        //Draw pixel
-        for(int i = 0; i < TOTAL_PIXELS; i += DATA_PER_PIXEL){
-            int xOffset = (i % DATA_PER_WIDTH) / DATA_PER_PIXEL * PIXEL_SIZE;
-            int yOffset = Math.floorDiv(i, DATA_PER_WIDTH) * PIXEL_SIZE;
-
-            g2d.setColor(new Color(pixels[i], pixels[i + 1], pixels[i + 2], pixels[i + 3]));
-            g2d.fillRect(initX + xOffset, initY + yOffset, PIXEL_SIZE, PIXEL_SIZE);
+        for(int i = 0; i < spriteBox[3]; i++) { //height
+            for(int j = 0; j < spriteBox[2]; j++) { //width
+                int pixelIndex = (j + i * spriteBox[2]) * DATA_PER_PIXEL;
+                g2d.setColor(new Color(pixels[pixelIndex], pixels[pixelIndex + 1], pixels[pixelIndex + 2], pixels[pixelIndex + 3]));
+                g2d.fillRect(initX + j * PIXEL_SIZE, initY + i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
+            }
         }
     }
 

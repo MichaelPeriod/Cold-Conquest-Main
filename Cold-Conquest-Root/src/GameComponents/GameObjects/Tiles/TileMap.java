@@ -8,16 +8,19 @@ import Utilities.Cords;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 public class TileMap {
     final int[] startPoint;
     final int[] tileBaseSize;
     final int tileBaseThinkness;
     final int[] tileSize;
+    final int[] tilemapSize;
     private GameWindow gw;
     final int pixelSize;
     final private static int DEFAULT_MAP_SIZE = 5;
-    private ArrayList<ArrayList<TiledObject>> tiles; //Read from 0, 0 being top center tile
+    private HashMap<Integer, TiledObject> tiles;
 
     public TileMap(GameWindow gw){
         this(DEFAULT_MAP_SIZE, gw);
@@ -30,83 +33,73 @@ public class TileMap {
         this.tileSize = new int[]{32, 32};
         this.gw = gw;
 
-        tiles = new ArrayList<>(mapSize);
-        for(int i = 0; i < mapSize; i++){
-            tiles.add(new ArrayList<>(mapSize));
-            for(int j = 0; j < mapSize; j++){
-                tiles.get(i).add(null);
-            }
-        }
-
+        tiles = new HashMap<>();
         startPoint = calculateStartPoint(mapSize);
+        tilemapSize = new int[] {mapSize, mapSize};
     }
 
     public void FillIceSheet(){
-        for(int i = 0; i < tiles.size(); i++){
-            for(int j = 0; j < tiles.get(0).size(); j++){
+        for(int i = 0; i < tilemapSize[1]; i++){
+            for(int j = 0; j < tilemapSize[0]; j++){
                 SetTile(new IceTile(), i, j);
             }
         }
     }
 
     public void SetTile(TiledObject obj, int x, int y){
-        if(!isInBounds(tiles, x, y)){
-            System.out.println("Tile is out of bounds...");
-            return;
-        }
-
-        tiles.get(x).set(y, obj);
+        tiles.put(getTileKey(x, y), obj);
         getTile(x, y).setPos(Cords.mapToWorld(this, x, y));
     }
 
-    private static boolean isInBounds(ArrayList<ArrayList<TiledObject>> tileMap, int x, int y){
-        if(tileMap.size() == 0 || tileMap.size() <= x)
-            return false;
-
-        return tileMap.get(0).size() != 0 || tileMap.get(0).size() > y;
+    public TiledObject getTile(int x, int y){
+        return tiles.get(getTileKey(x, y));
     }
 
-    public TiledObject getTile(int x, int y){
-        if(!isInBounds(tiles, x, y)){
-            System.out.println("Tile is out of bounds...");
-            return null;
-        }
-
-        return tiles.get(x).get(y);
+    public int getTileKey(int x, int y){
+        return x + y * tilemapSize[0];
     }
 
     public void DrawTiles(Graphics2D g){
-        for(ArrayList<TiledObject> row : tiles){
-            for(TiledObject tile : row){
-                if(tile != null)
-                    tile.drawSprite(g);
+        //0, 0
+        //0, 1 - 1, 0
+        //0, 2 - 1, 1 - 2, 0
+        //1, 2 - 2, 1
+        //2, 2
+//        for(int i = 0; i < tilemapSize[1]; i++){
+//            for(int j = 0; j < tilemapSize[0]; j++){
+//                if(!tiles.containsKey(getTileKey(j, i))) continue;
+//                TiledObject obj = getTile(j, i);
+//                obj.drawSprite(g);
+//            }
+//        }
+        int rows = tilemapSize[1];
+        int columns = tilemapSize[0];
+
+        int maxSum = rows + columns - 2; // Maximum number of iterations needed
+
+        for (int sum = 0; sum <= maxSum; sum++) {
+            for (int i = 0; i <= sum; i++) {
+                int j = sum - i;
+                if (i < rows && j < columns) {
+                    if(!tiles.containsKey(getTileKey(j, i))) continue;
+                    TiledObject obj = getTile(j, i);
+                    obj.drawSprite(g);
+                }
             }
         }
-
-        //int[] start = Cords.worldToMap(this, 0, 400);
-        //int[] start = {400, 400};
-        //g.setColor(Color.BLACK);
-        //g.fillOval(start[0] - 10, start[1] - 10, 20, 20);
     }
 
     @Override
     public String toString(){
         String sBuilder = "";
-        for(ArrayList<TiledObject> row : tiles){
-            for(TiledObject tile : row){
-                sBuilder += tile.toString() + " ";
-            }
-            sBuilder += "\n";
+        for(TiledObject obj : tiles.values()){
+            sBuilder += obj.toString() + ", ";
         }
         return sBuilder;
     }
 
     private int[] calculateStartPoint(int mapSize){
-        final int[] windowCenter = {gw.screenWidth / 2, gw.screenHeight / 2};
-        final int tileHeight = tileBaseSize[1] - tileBaseThinkness;
-        final int tileWidth = tileBaseSize[0];
-        int[] toReturn = {windowCenter[0] - tileWidth / 2, -(mapSize * tileHeight / 2) + windowCenter[1]};
-        return toReturn;
+        return new int[] {gw.screenWidth / 2, gw.screenHeight / 2};
     }
 
     public int getPixelSize() {

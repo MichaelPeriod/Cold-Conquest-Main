@@ -5,24 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/indicator-concreate.ase" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/indicator-concreate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/indicator-metal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/ship-yard.ase" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/ship-yard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Lab/Lab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/SolarPanel/SolarPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerLiquid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerSolid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/ConcreateIndicator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/MetalIndicator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/OilIndicator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/WaterIndicator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Base/Base.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/ShipYard/ShipYard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-metal.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-metal.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/solar-pannels.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/solar-pannels.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/base.ase" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/base.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/base.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-oil.ase" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-oil.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-oil.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-oil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.ase" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/base.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/base.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/indicator-oil.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-oil.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/indicator-oil.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-oil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ship-yard.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.ase" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ship-yard.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utilities/Cords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities/Cords.java" afterDir="false" />
     </list>
@@ -114,6 +117,7 @@
       <workItem from="1686011924614" duration="1049000" />
       <workItem from="1686100503416" duration="1222000" />
       <workItem from="1686356456340" duration="4132000" />
+      <workItem from="1687627222096" duration="10127000" />
     </task>
     <servers />
   </component>

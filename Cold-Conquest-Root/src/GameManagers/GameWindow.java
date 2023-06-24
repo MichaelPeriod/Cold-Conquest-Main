@@ -1,11 +1,18 @@
 package GameManagers;
 
 import GameComponents.GameObjects.PixelObject;
+import GameComponents.GameObjects.Tiles.Indicators.ConcreateIndicator;
+import GameComponents.GameObjects.Tiles.Indicators.MetalIndicator;
+import GameComponents.GameObjects.Tiles.Indicators.OilIndicator;
+import GameComponents.GameObjects.Tiles.Indicators.WaterIndicator;
+import GameComponents.GameObjects.Tiles.Infrastructure.Base.Base;
 import GameComponents.GameObjects.Tiles.Infrastructure.Lab.Lab;
 import GameComponents.GameObjects.Tiles.Infrastructure.Miner.BaseMiner;
+import GameComponents.GameObjects.Tiles.Infrastructure.ShipYard.ShipYard;
 import GameComponents.GameObjects.Tiles.Infrastructure.SolarPanel.SolarPanel;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerLiquid;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerSolid;
+import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.SpriteRenderer;
 
@@ -32,19 +39,28 @@ public class GameWindow extends JPanel implements Runnable {
     }
 
     public void setup(){
-        final int tileMapSize = 5;
+        final int tileMapSize = 6;
         SpriteRenderer.renderer();
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
         tileMaps.get(0).FillIceSheet();
+        tileMaps.get(0).SetTile(new IceTile(), 0, 0);
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
 
         tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
         tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
-        tileMaps.get(1).SetTile(new StorageContainerSolid(), 2, 0);
-        tileMaps.get(1).SetTile(new StorageContainerLiquid(), 3, 0);
-        tileMaps.get(1).SetTile(new Lab(), 0, 2);
+        tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
+        tileMaps.get(1).SetTile(new StorageContainerSolid(), 3, 0);
+
+        tileMaps.get(1).SetTile(new Lab(), 1, 3);
+        tileMaps.get(1).SetTile(new Base(), 3, 3);
+        tileMaps.get(1).SetTile(new ShipYard(), 5, 3);
+
+        tileMaps.get(1).SetTile(new ConcreateIndicator(), 0, 5);
+        tileMaps.get(1).SetTile(new WaterIndicator(), 1, 5);
+        tileMaps.get(1).SetTile(new OilIndicator(), 2, 5);
+        tileMaps.get(1).SetTile(new MetalIndicator(), 3, 5);
 
         Thread gameThread = new Thread(this);
         gameThread.start();

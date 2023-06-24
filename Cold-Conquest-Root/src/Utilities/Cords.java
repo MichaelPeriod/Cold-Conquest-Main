@@ -3,6 +3,7 @@ package Utilities;
 import GameComponents.GameObjects.Tiles.TileMap;
 
 public class Cords {
+    //Need to attach to the tilemap itself
     public static int[] mapToWorld(TileMap tm, int x, int y){
         //When placing tiles the top seems to be sub-pixel off so leaving for now but to keep an eye on
         final int[] sp = tm.getStartPoint();
