@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/pole.ase" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/pole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Pole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/InputManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.ase" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/ship-yard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ship-yard.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ship-yard.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +98,7 @@
       <workItem from="1686100503416" duration="1222000" />
       <workItem from="1686356456340" duration="4132000" />
       <workItem from="1687627222096" duration="10251000" />
-      <workItem from="1687728008862" duration="1809000" />
+      <workItem from="1687728008862" duration="4527000" />
     </task>
     <servers />
   </component>

@@ -15,6 +15,7 @@ import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerS
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.Pole;
 import GameComponents.GameObjects.Tiles.TileMap;
+import GameComponents.InputManager;
 import GameComponents.SpriteRenderer;
 
 import javax.swing.*;
@@ -25,7 +26,6 @@ public class GameWindow extends JPanel implements Runnable {
     public final int screenWidth = 854;
     public final int screenHeight = 480;
     public final int FPS = 60;
-
     ArrayList<TileMap> tileMaps = new ArrayList<>();
     ArrayList<PixelObject> unorganizedObjects = new ArrayList<>();
 
@@ -33,9 +33,9 @@ public class GameWindow extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(new Color(54, 197, 244));
         this.setDoubleBuffered(true);
-        //this.addKeyListener(keyH);
-        //this.addMouseListener(keyH);
-        //this.addMouseMotionListener(keyH);
+        this.addKeyListener(InputManager.current());
+        this.addMouseListener(InputManager.current());
+        this.addMouseMotionListener(InputManager.current());
         this.setFocusable(true);
     }
 
@@ -100,6 +100,7 @@ public class GameWindow extends JPanel implements Runnable {
 
             repaint();
             delta--;
+            System.out.println(InputManager.current().buttonsDown());
         }
     }
 }
