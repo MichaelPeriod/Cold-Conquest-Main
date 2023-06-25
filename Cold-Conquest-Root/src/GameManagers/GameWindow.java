@@ -13,6 +13,7 @@ import GameComponents.GameObjects.Tiles.Infrastructure.SolarPanel.SolarPanel;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerLiquid;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerSolid;
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
+import GameComponents.GameObjects.Tiles.Pole;
 import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.SpriteRenderer;
 
@@ -52,6 +53,7 @@ public class GameWindow extends JPanel implements Runnable {
         tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
         tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
         tileMaps.get(1).SetTile(new StorageContainerSolid(), 3, 0);
+        tileMaps.get(1).SetTile(new Pole(), 5, 1);
 
         tileMaps.get(1).SetTile(new Lab(), 1, 3);
         tileMaps.get(1).SetTile(new Base(), 3, 3);
