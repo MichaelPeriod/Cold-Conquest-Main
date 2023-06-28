@@ -100,7 +100,6 @@ public class GameWindow extends JPanel implements Runnable {
 
             repaint();
             delta--;
-            System.out.println(InputManager.current().buttonsDown());
         }
     }
 }

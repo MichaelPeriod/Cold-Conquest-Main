@@ -131,6 +131,14 @@ public class InputManager implements KeyListener, MouseListener, MouseMotionList
         notifyMouseClickEvent(e, false);
     }
 
+    public void addMouseButtonListener(MouseButtonObserver listener){
+        mouseListeners.add(listener);
+    }
+
+    public void removeMouseButtonListener(MouseButtonObserver listener){
+        mouseListeners.remove(listener);
+    }
+
     private void notifyMouseClickEvent(MouseEvent e, boolean isDown){
         for(MouseButtonObserver listener : mouseListeners){
             if(isDown){
@@ -178,6 +186,14 @@ public class InputManager implements KeyListener, MouseListener, MouseMotionList
         currPos = e.getPoint();
 
         notifyMouseMoveEvent(e);
+    }
+
+    public void addMouseMoveListener(MouseMovementObserver listener){
+        mouseMovementObservers.add(listener);
+    }
+
+    public void removeMouseMoveListener(MouseMovementObserver listener){
+        mouseMovementObservers.remove(listener);
     }
 
     private void notifyMouseMoveEvent(MouseEvent e){
