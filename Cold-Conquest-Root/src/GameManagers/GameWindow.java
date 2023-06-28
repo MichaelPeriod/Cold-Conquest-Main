@@ -15,7 +15,7 @@ import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerS
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.Pole;
 import GameComponents.GameObjects.Tiles.TileMap;
-import GameComponents.InputManager;
+import GameComponents.InputHandler.InputManager;
 import GameComponents.SpriteRenderer;
 
 import javax.swing.*;

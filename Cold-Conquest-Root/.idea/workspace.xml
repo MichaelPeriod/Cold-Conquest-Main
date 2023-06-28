@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/InputManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/KeyboardObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseButtonObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseMovementObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/InputManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -99,6 +103,7 @@
       <workItem from="1686356456340" duration="4132000" />
       <workItem from="1687627222096" duration="10251000" />
       <workItem from="1687728008862" duration="4527000" />
+      <workItem from="1687908918167" duration="3164000" />
     </task>
     <servers />
   </component>
