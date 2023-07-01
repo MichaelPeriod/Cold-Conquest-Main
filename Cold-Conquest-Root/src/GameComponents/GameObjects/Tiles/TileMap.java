@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class TileMap implements MouseMovementObserver {
-    final int[] startPoint;
+    final Point startPoint;
     final int[] tileBaseSize;
     final int tileBaseThinkness;
     final int[] tileSize;
@@ -24,7 +24,9 @@ public class TileMap implements MouseMovementObserver {
     final private static int DEFAULT_MAP_SIZE = 5;
     private HashMap<Integer, TiledObject> tiles;
 
-    private int[] tileSelected = new int[2];
+    private Point tileSelected = new Point(0, 0);
+
+    private final Cords cords;
 
     public TileMap(GameWindow gw){
         this(DEFAULT_MAP_SIZE, gw);
@@ -41,6 +43,8 @@ public class TileMap implements MouseMovementObserver {
         startPoint = calculateStartPoint(mapSize);
         tilemapSize = new int[] {mapSize, mapSize};
 
+        cords = new Cords(this);
+
         InputManager.current().addMouseMoveListener(this);
     }
 
@@ -53,8 +57,12 @@ public class TileMap implements MouseMovementObserver {
     }
 
     public void SetTile(TiledObject obj, int x, int y){
-        tiles.put(getTileKey(x, y), obj);
-        getTile(x, y).setPos(Cords.mapToWorld(this, x, y));
+        SetTile(obj, new Point(x, y));
+    }
+
+    public void SetTile(TiledObject obj, Point tilePos){
+        tiles.put(getTileKey(tilePos.x, tilePos.y), obj);
+        getTile(tilePos.x, tilePos.y).setPos(cords.mapToWorld(tilePos));
     }
 
     public TiledObject getTile(int x, int y){
@@ -83,8 +91,14 @@ public class TileMap implements MouseMovementObserver {
         }
 
         g.setColor(Color.BLACK);
-        int[] nearestTilePos = tileSelected;
-        g.fillOval(nearestTilePos[0] - 10, nearestTilePos[1] - 10, 20, 20);
+//        Point nearbyTile = cords.mapToWorld(tileSelected);
+//        int[] nearestTilePos = new int[] {nearbyTile.x, nearbyTile.y};
+//        g.fillOval(nearestTilePos[0] - 10, nearestTilePos[1] - 10, 20, 20);
+
+//        for(int i = 0; i < 4 * 4; i++){
+//            Point testTile = cords.mapToWorld(cords.worldToMap(cords.mapToWorld(new Point(Math.floorDiv(i, 4), i % 4))));
+//            g.fillOval(testTile.x - 10, testTile.y - 10, 20, 20);
+//        }
     }
 
     @Override
@@ -96,15 +110,15 @@ public class TileMap implements MouseMovementObserver {
         return sBuilder;
     }
 
-    private int[] calculateStartPoint(int mapSize){
-        return new int[] {gw.screenWidth / 2, gw.screenHeight / 2};
+    private Point calculateStartPoint(int mapSize){
+        return new Point(gw.screenWidth / 2, gw.screenHeight / 2);
     }
 
     public int getPixelSize() {
         return pixelSize;
     }
 
-    public int[] getStartPoint() {
+    public Point getStartPoint() {
         return startPoint;
     }
 
@@ -127,6 +141,7 @@ public class TileMap implements MouseMovementObserver {
     }
 
     private void selectTile(Point pos){
-        tileSelected = new int[]{pos.x, pos.y};
+        //tileSelected = cords.worldToMap(pos);
+        //System.out.println(tileSelected.x + " " + tileSelected.y);
     }
 }

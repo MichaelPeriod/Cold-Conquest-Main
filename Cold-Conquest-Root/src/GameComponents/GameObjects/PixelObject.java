@@ -3,6 +3,7 @@ package GameComponents.GameObjects;
 import GameComponents.IDrawable;
 import GameComponents.SpriteRenderer;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class PixelObject extends GameObject implements IDrawable {
@@ -62,9 +63,8 @@ public abstract class PixelObject extends GameObject implements IDrawable {
         return spriteBox[3];
     }
 
-    public int[] getPos(){
-        int[] toReturn = {getPosX(), getPosY()};
-        return toReturn;
+    public Point getPos(){
+        return new Point(getPosX(), getPosY());
     }
 
     public void setPos(int[] pos){
@@ -73,6 +73,9 @@ public abstract class PixelObject extends GameObject implements IDrawable {
     public void setPos(int x, int y){
         setPosX(x);
         setPosY(y);
+    }
+    public void setPos(Point pos){
+        setPos(pos.x, pos.y);
     }
 
     public int[] getDimensions(){

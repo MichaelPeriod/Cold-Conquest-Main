@@ -2,73 +2,112 @@ package Utilities;
 
 import GameComponents.GameObjects.Tiles.TileMap;
 
+import java.awt.*;
+
 public class Cords {
-    //Need to attach to the tilemap itself
-    public static int[] mapToWorld(TileMap tm, int x, int y){
+    private final TileMap tm;
+
+    public Cords(TileMap tm){
+        this.tm = tm;
+
+        for(int i = 0; i < 16; i++){
+            System.out.println(worldToMap(mapToWorld(new Point(Math.floorDiv(i, 4), i % 4))).toString());
+        }
+        System.out.println();
+        /*
+        for the xOut cord:
+        xIn = 1 means xOut + 64
+        xIn = -1 means xOut - 64
+        yIn = 1 means xOut -64
+        yIn = -1 means xOut + 64
+
+        for the yOut cord:
+        xIn = 1 means xOut + 30
+        xIn = -1 means xOut -30
+        yIn = 1 means xOut + 30
+        yIn = -1 means xOut -30
+        */
+    }
+
+    public Point mapToWorld(Point pos){
         //When placing tiles the top seems to be sub-pixel off so leaving for now but to keep an eye on
-        final int[] sp = tm.getStartPoint();
+        final Point sp = tm.getStartPoint();
         final int[] size = tm.getTileBaseSize().clone();
         size[1] -= tm.getTileBaseThinkness();
-        int[] toReturn = {sp[0] + (x * size[0] / 2) - (y * size[0] / 2),
-                          sp[1] + ((x + y) * size[1] / 2)};
-        return toReturn;
+        return new Point(
+                sp.x + (pos.x * size[0] / 2) - (pos.y * size[0] / 2),
+                sp.y + ((pos.x + pos.y) * size[1] / 2)
+        );
     }
 
-    public static int[] mapToWorldCorner(TileMap tm, int x, int y){
-        int[] toReturn = mapToWorld(tm, x, y);
-        return worldCornerOffset(tm, toReturn[0], toReturn[1]);
+    public Point mapToWorldCorner(Point pos){
+        Point toReturn = mapToWorld(pos);
+        return worldCornerOffset(toReturn);
     }
 
-    public static int[] mapToWorldCenter(TileMap tm, int x, int y){
-        int[] toReturn = mapToWorldCorner(tm, x, y);
-        return worldToCenterOffset(tm, toReturn[0], toReturn[1]);
-    }
-
-    public static int[] worldToMap(TileMap tm, int worldX, int worldY) {
-        //TODO Need to fix, calculations don't work
-        System.out.println("Maintenance needed on Cords.worldToMap()");
-        final int[] sp = tm.getStartPoint();
-        final int[] size = tm.getTileBaseSize().clone();
-        size[1] -= tm.getTileBaseThinkness();
-
-        int deltaX = worldX - sp[0];
-        int deltaY = worldY - sp[1];
-
-        int[] toReturn = new int[2];
-        toReturn[0] = (2 * deltaX + deltaY * size[0]) / (2 * size[0]);
-        toReturn[1] = (2 * deltaY - deltaX * size[1]) / (2 * size[1]);
+    public Point mapToWorldCenter(Point pos){
+        Point toReturn = mapToWorld(pos);
+        toReturn.y -= (tm.getTileBaseSize()[1] + tm.getTileBaseThinkness()) / 2;
 
         return toReturn;
     }
 
-    public static int[] worldToMapCorner(TileMap tm, int x, int y){
-        int[] toReturn = worldToMap(tm, x, y);
-        return worldCornerOffset(tm, toReturn[0], toReturn[1]);
+    public Point worldToMap(Point pos) {
+        Point worldPos = new Point(pos.x, pos.y);
+
+        Point startPos = tm.getStartPoint();
+        worldPos.translate(-startPos.x, -startPos.y);
+
+        int[] tileSize = tm.getTileBaseSize().clone();
+        tileSize[1] -= tm.getTileBaseThinkness();
+        tileSize[0] /= tileSize[0];
+        tileSize[1] /= tileSize[1];
+
+        //worldX / tileSize[0] = isoX - isoY
+        //worldY / tileSize[1] = isoX + isoY
+
+        //given this
+        //isoX = isoY + (worldX / tileSize[0])
+        //(worldY / tileSize[1] - worldX / tileSize[0]) / 2 = isoY
+        //worldY / tileSize[1] - ((worldY / tileSize[1] - worldX / tileSize[0]) / 2) = isoX
+
+        //No clue why this isn't reading as 0, 1, 2, 3 but for some reason the division hates me
+        System.out.println(Math.floorDiv(worldPos.y, tileSize[1]));
+        int isoY = (worldPos.y / tileSize[1] - worldPos.x / tileSize[0]) / 2;
+        return new Point(
+                (worldPos.y / tileSize[1] - isoY),
+                isoY
+        );
     }
 
-    public static int[] worldToMapCenter(TileMap tm, int x, int y){
-        int[] toReturn = worldToMapCorner(tm, x, y);
-        return worldToCenterOffset(tm, toReturn[0], toReturn[1]);
+    public Point worldToMapCorner(Point pos){
+        Point toReturn = worldToMap(pos);
+        return worldCornerOffset(toReturn);
     }
 
-    private static int[] worldCornerOffset(TileMap tm, int x, int y){
+    public Point worldToMapCenter(Point pos){
+        Point toReturn = worldToMapCorner(pos);
+        return worldToCenterOffset(toReturn);
+    }
+
+    private Point worldCornerOffset(Point pos){
         final int MAX_SIZE = 32;
-        int[] toReturn = {x, y};
+        Point toReturn = pos;
         int[] tilePixelSize = {tm.getTileBaseSize()[0] / tm.getPixelSize(),
                 tm.getTileBaseSize()[1] / tm.getPixelSize()};
-        toReturn[0] += (MAX_SIZE - tilePixelSize[0]) * tm.getPixelSize();
-        toReturn[1] += (MAX_SIZE - tilePixelSize[1]) * tm.getPixelSize();
+        toReturn.x += (MAX_SIZE - tilePixelSize[0]) * tm.getPixelSize();
+        toReturn.y += (MAX_SIZE - tilePixelSize[1]) * tm.getPixelSize();
         return toReturn;
     }
 
-    private static int[] worldToCenterOffset(TileMap tm, int x, int y){
-        int[] corner = {x, y};
+    private Point worldToCenterOffset(Point pos){
+        Point corner = pos;
         int[] dimensions = tm.getTileBaseSize().clone();
         dimensions[1] -= tm.getTileBaseThinkness();
 
-        int[] toReturn = new int[2];
-        for(int i = 0; i < corner.length; i++)
-            toReturn[i] = corner[i] + dimensions[i] / 2;
-        return toReturn;
+        return new Point(
+                corner.x + dimensions[0] / 2,
+                corner.y + dimensions[1] / 2
+        );
     }
 }
