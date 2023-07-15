@@ -60,8 +60,8 @@ public class Cords {
 
         int[] tileSize = tm.getTileBaseSize().clone();
         tileSize[1] -= tm.getTileBaseThinkness();
-        tileSize[0] /= tileSize[0];
-        tileSize[1] /= tileSize[1];
+        tileSize[0] /= 2;
+        tileSize[1] /= 2;
 
         //worldX / tileSize[0] = isoX - isoY
         //worldY / tileSize[1] = isoX + isoY
@@ -71,43 +71,35 @@ public class Cords {
         //(worldY / tileSize[1] - worldX / tileSize[0]) / 2 = isoY
         //worldY / tileSize[1] - ((worldY / tileSize[1] - worldX / tileSize[0]) / 2) = isoX
 
-        //No clue why this isn't reading as 0, 1, 2, 3 but for some reason the division hates me
-        System.out.println(Math.floorDiv(worldPos.y, tileSize[1]));
-        int isoY = (worldPos.y / tileSize[1] - worldPos.x / tileSize[0]) / 2;
+//        worldPos = new Point(0, 59);
+        float isoY = (worldPos.y / (float)tileSize[1] - worldPos.x / (float)tileSize[0]) / 2f;
+        float isoX = worldPos.y / (float)tileSize[1] - isoY;
         return new Point(
-                (worldPos.y / tileSize[1] - isoY),
-                isoY
+                Math.round(isoX),
+                Math.round(isoY)
         );
     }
 
     public Point worldToMapCorner(Point pos){
-        Point toReturn = worldToMap(pos);
-        return worldCornerOffset(toReturn);
+        return worldToMap(worldCornerOffset(pos));
     }
 
     public Point worldToMapCenter(Point pos){
-        Point toReturn = worldToMapCorner(pos);
-        return worldToCenterOffset(toReturn);
+        return worldToMap(worldToCenterOffset(pos));
     }
 
     private Point worldCornerOffset(Point pos){
-        final int MAX_SIZE = 32;
         Point toReturn = pos;
-        int[] tilePixelSize = {tm.getTileBaseSize()[0] / tm.getPixelSize(),
-                tm.getTileBaseSize()[1] / tm.getPixelSize()};
-        toReturn.x += (MAX_SIZE - tilePixelSize[0]) * tm.getPixelSize();
-        toReturn.y += (MAX_SIZE - tilePixelSize[1]) * tm.getPixelSize();
+        toReturn.x -= tm.getTileBaseSize()[0] / 2;
+        toReturn.y -= tm.getTileBaseSize()[1];
+
         return toReturn;
     }
 
     private Point worldToCenterOffset(Point pos){
-        Point corner = pos;
-        int[] dimensions = tm.getTileBaseSize().clone();
-        dimensions[1] -= tm.getTileBaseThinkness();
-
         return new Point(
-                corner.x + dimensions[0] / 2,
-                corner.y + dimensions[1] / 2
+                pos.x,
+                pos.y + ((tm.getTileBaseThinkness() + tm.getTileBaseSize()[1]) / 2)
         );
     }
 }

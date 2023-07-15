@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utilities/Cords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities/Cords.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +103,8 @@
       <workItem from="1687728008862" duration="4527000" />
       <workItem from="1687908918167" duration="4549000" />
       <workItem from="1688235284089" duration="7729000" />
+      <workItem from="1688493585622" duration="12000" />
+      <workItem from="1689449614505" duration="4995000" />
     </task>
     <servers />
   </component>
@@ -135,6 +137,16 @@
           <properties class="java.lang.ArithmeticException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Utilities/Cords.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Utilities/Cords.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -25,6 +25,7 @@ public class TileMap implements MouseMovementObserver {
     private HashMap<Integer, TiledObject> tiles;
 
     private Point tileSelected = new Point(0, 0);
+    private Point mousePos = new Point(0, 0);
 
     private final Cords cords;
 
@@ -91,14 +92,8 @@ public class TileMap implements MouseMovementObserver {
         }
 
         g.setColor(Color.BLACK);
-//        Point nearbyTile = cords.mapToWorld(tileSelected);
-//        int[] nearestTilePos = new int[] {nearbyTile.x, nearbyTile.y};
-//        g.fillOval(nearestTilePos[0] - 10, nearestTilePos[1] - 10, 20, 20);
-
-//        for(int i = 0; i < 4 * 4; i++){
-//            Point testTile = cords.mapToWorld(cords.worldToMap(cords.mapToWorld(new Point(Math.floorDiv(i, 4), i % 4))));
-//            g.fillOval(testTile.x - 10, testTile.y - 10, 20, 20);
-//        }
+        Point nearbyTile = cords.mapToWorldCenter(tileSelected);
+        g.fillOval(nearbyTile.x - 10, nearbyTile.y - 10, 20, 20);
     }
 
     @Override
@@ -111,7 +106,9 @@ public class TileMap implements MouseMovementObserver {
     }
 
     private Point calculateStartPoint(int mapSize){
-        return new Point(gw.screenWidth / 2, gw.screenHeight / 2);
+        return new Point(gw.screenWidth / 2, gw.screenHeight / 2 - 100);
+//        return new Point(0, 0);
+
     }
 
     public int getPixelSize() {
@@ -141,7 +138,7 @@ public class TileMap implements MouseMovementObserver {
     }
 
     private void selectTile(Point pos){
-        //tileSelected = cords.worldToMap(pos);
-        //System.out.println(tileSelected.x + " " + tileSelected.y);
+        tileSelected = cords.worldToMapCenter(pos);
+        mousePos = pos;
     }
 }
