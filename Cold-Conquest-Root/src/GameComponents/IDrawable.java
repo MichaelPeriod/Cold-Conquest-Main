@@ -7,7 +7,7 @@ public interface IDrawable {
         SpriteRenderer.renderer().drawSprite(g2d, getSprite(), getSpriteBox());
     }
 
-    int[] getSprite();
+    default int[] getSprite() {return new int[0];}
 
-    int[] getSpriteBox();
+    default int[] getSpriteBox() {return new int[0];}
 }

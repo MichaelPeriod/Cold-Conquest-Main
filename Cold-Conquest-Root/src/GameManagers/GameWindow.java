@@ -47,22 +47,22 @@ public class GameWindow extends JPanel implements Runnable {
         tileMaps.get(0).FillIceSheet();
         tileMaps.get(0).SetTile(new IceTile(), 0, 0);
 
-//        tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
-//
-//        tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
-//        tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
-//        tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
-//        tileMaps.get(1).SetTile(new StorageContainerSolid(), 3, 0);
-//        tileMaps.get(1).SetTile(new Pole(), 5, 1);
-//
-//        tileMaps.get(1).SetTile(new Lab(), 1, 3);
-//        tileMaps.get(1).SetTile(new Base(), 3, 3);
-//        tileMaps.get(1).SetTile(new ShipYard(), 5, 3);
-//
-//        tileMaps.get(1).SetTile(new ConcreateIndicator(), 0, 5);
-//        tileMaps.get(1).SetTile(new WaterIndicator(), 1, 5);
-//        tileMaps.get(1).SetTile(new OilIndicator(), 2, 5);
-//        tileMaps.get(1).SetTile(new MetalIndicator(), 3, 5);
+        tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
+
+        tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
+        tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
+        tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
+        tileMaps.get(1).SetTile(new StorageContainerSolid(), 3, 0);
+        tileMaps.get(1).SetTile(new Pole(), 5, 1);
+
+        tileMaps.get(1).SetTile(new Lab(), 1, 3);
+        tileMaps.get(1).SetTile(new Base(), 3, 3);
+        tileMaps.get(1).SetTile(new ShipYard(), 5, 3);
+
+        tileMaps.get(1).SetTile(new ConcreateIndicator(), 0, 5);
+        tileMaps.get(1).SetTile(new WaterIndicator(), 1, 5);
+        tileMaps.get(1).SetTile(new OilIndicator(), 2, 5);
+        tileMaps.get(1).SetTile(new MetalIndicator(), 3, 5);
 
         Thread gameThread = new Thread(this);
         gameThread.start();

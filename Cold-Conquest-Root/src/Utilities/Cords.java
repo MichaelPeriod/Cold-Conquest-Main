@@ -10,10 +10,6 @@ public class Cords {
     public Cords(TileMap tm){
         this.tm = tm;
 
-        for(int i = 0; i < 16; i++){
-            System.out.println(worldToMap(mapToWorld(new Point(Math.floorDiv(i, 4), i % 4))).toString());
-        }
-        System.out.println();
         /*
         for the xOut cord:
         xIn = 1 means xOut + 64
@@ -71,7 +67,6 @@ public class Cords {
         //(worldY / tileSize[1] - worldX / tileSize[0]) / 2 = isoY
         //worldY / tileSize[1] - ((worldY / tileSize[1] - worldX / tileSize[0]) / 2) = isoX
 
-//        worldPos = new Point(0, 59);
         float isoY = (worldPos.y / (float)tileSize[1] - worldPos.x / (float)tileSize[0]) / 2f;
         float isoX = worldPos.y / (float)tileSize[1] - isoY;
         return new Point(

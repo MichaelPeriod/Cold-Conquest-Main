@@ -5,6 +5,7 @@ import GameComponents.GameObjects.Tiles.TiledObject;
 import GameComponents.InputHandler.InputManager;
 import GameComponents.InputHandler.MouseMovementObserver;
 import GameComponents.SpriteRenderer;
+import GameComponents.UI.TileSelector.TileSelector;
 import GameManagers.GameWindow;
 import Utilities.Cords;
 
@@ -14,49 +15,54 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class TileMap implements MouseMovementObserver {
-    final Point startPoint;
-    final int[] tileBaseSize;
-    final int tileBaseThinkness;
-    final int[] tileSize;
-    final int[] tilemapSize;
-    private GameWindow gw;
-    final int pixelSize;
-    final private static int DEFAULT_MAP_SIZE = 5;
-    private HashMap<Integer, TiledObject> tiles;
+    /*Variables*/
+    private final Point startPoint;
+    private final int[] tileBaseSize;
+    private final int tileBaseThinkness;
+    private final int[] tileSize;
+    private final int[] tilemapSize;
+    private final GameWindow gw;
+    private final int pixelSize;
+    private final static int DEFAULT_MAP_SIZE = 5;
 
+    /*Tile finder*/
+    private final HashMap<Integer, TiledObject> tiles;
+
+    /*Sub-objects*/
+    public final Cords cords;
+    private final InputManager inputManager;
+    private final TileSelector tileSelector;
+
+    /*Dynamic Variables*/
     private Point tileSelected = new Point(0, 0);
     private Point mousePos = new Point(0, 0);
 
-    private final Cords cords;
-
+    /*Constructors*/
     public TileMap(GameWindow gw){
         this(DEFAULT_MAP_SIZE, gw);
     }
 
-    public TileMap(int mapSize, GameWindow gw){
+    public TileMap(int mapSize, GameWindow _gw){
+        //Variable setter
+        this.gw = _gw;
         this.pixelSize = SpriteRenderer.getPixelSize();
         this.tileBaseSize = new int[]{pixelSize * 32, pixelSize * 20};
         this.tileBaseThinkness = 5 * pixelSize;
         this.tileSize = new int[]{32, 32};
-        this.gw = gw;
-
-        tiles = new HashMap<>();
-        startPoint = calculateStartPoint(mapSize);
         tilemapSize = new int[] {mapSize, mapSize};
+        startPoint = calculateStartPoint(mapSize);
 
+        //Declare subclasses
         cords = new Cords(this);
+        inputManager = InputManager.current();
+        tileSelector = new TileSelector(this);
 
+        //Set variables
+        tiles = new HashMap<>();
         InputManager.current().addMouseMoveListener(this);
     }
 
-    public void FillIceSheet(){
-        for(int i = 0; i < tilemapSize[1]; i++){
-            for(int j = 0; j < tilemapSize[0]; j++){
-                SetTile(new IceTile(), i, j);
-            }
-        }
-    }
-
+    /*Tile manipulation*/
     public void SetTile(TiledObject obj, int x, int y){
         SetTile(obj, new Point(x, y));
     }
@@ -74,6 +80,15 @@ public class TileMap implements MouseMovementObserver {
         return x + y * tilemapSize[0];
     }
 
+    public void FillIceSheet(){
+        for(int i = 0; i < tilemapSize[1]; i++){
+            for(int j = 0; j < tilemapSize[0]; j++){
+                SetTile(new IceTile(), i, j);
+            }
+        }
+    }
+
+    /*Render sprites*/
     public void DrawTiles(Graphics2D g){
         int rows = tilemapSize[1];
         int columns = tilemapSize[0];
@@ -90,12 +105,9 @@ public class TileMap implements MouseMovementObserver {
                 }
             }
         }
-
-        g.setColor(Color.BLACK);
-        Point nearbyTile = cords.mapToWorldCenter(tileSelected);
-        g.fillOval(nearbyTile.x - 10, nearbyTile.y - 10, 20, 20);
     }
 
+    /*Searialize Tiles*/
     @Override
     public String toString(){
         String sBuilder = "";
@@ -105,10 +117,9 @@ public class TileMap implements MouseMovementObserver {
         return sBuilder;
     }
 
+    /*Getters and Setters*/
     private Point calculateStartPoint(int mapSize){
-        return new Point(gw.screenWidth / 2, gw.screenHeight / 2 - 100);
-//        return new Point(0, 0);
-
+        return new Point(gw.screenWidth / 2, (gw.screenHeight - tileSize[1] - tileBaseThinkness) / 2);
     }
 
     public int getPixelSize() {
@@ -127,6 +138,7 @@ public class TileMap implements MouseMovementObserver {
         return tileBaseThinkness;
     }
 
+    /*Input Management*/
     @Override
     public void onMouseMove(Point pos) {
         selectTile(pos);

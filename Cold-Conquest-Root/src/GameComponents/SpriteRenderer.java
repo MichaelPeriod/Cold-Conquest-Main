@@ -101,6 +101,17 @@ public class SpriteRenderer {
         }
     }
 
+    /*Sprite Shapes*/
+    private void rendererRhombusOutlne(Graphics2D g2d, int[] outline, int[] color){
+        g2d.setColor(Color.BLUE);
+        g2d.fillRect(outline[0], outline[1] + outline[3] / 2 - getPixelSize() / 2, getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(), outline[1], getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(),
+                outline[1] - outline[3] - getPixelSize(), getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] - getPixelSize(),
+                outline[1] - outline[3] / 2 - getPixelSize(), getPixelSize(), getPixelSize());
+    }
+
     /*Getters and Setters*/
     public static int getPixelSize() {
         return pixelSize;
