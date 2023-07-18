@@ -44,11 +44,18 @@ public class GameWindow extends JPanel implements Runnable {
         SpriteRenderer.renderer();
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
-        tileMaps.get(0).FillIceSheet();
+        //tileMaps.get(0).FillIceSheet();
         tileMaps.get(0).SetTile(new IceTile(), 0, 0);
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
 
+        //addTiles();
+
+        Thread gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    private void addTiles(){
         tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
         tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
         tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
@@ -63,9 +70,6 @@ public class GameWindow extends JPanel implements Runnable {
         tileMaps.get(1).SetTile(new WaterIndicator(), 1, 5);
         tileMaps.get(1).SetTile(new OilIndicator(), 2, 5);
         tileMaps.get(1).SetTile(new MetalIndicator(), 3, 5);
-
-        Thread gameThread = new Thread(this);
-        gameThread.start();
     }
 
     public void paint(Graphics g) {

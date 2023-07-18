@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class SpriteRenderer {
     private static SpriteRenderer renderer = null;
     private static final String spriteRoot = "res/";
-    private static int pixelSize = 4;
+    private static int pixelSize = 8;
     private static final int DATA_PER_PIXEL = 4;
 
 
@@ -102,14 +102,41 @@ public class SpriteRenderer {
     }
 
     /*Sprite Shapes*/
-    private void rendererRhombusOutlne(Graphics2D g2d, int[] outline, int[] color){
-        g2d.setColor(Color.BLUE);
-        g2d.fillRect(outline[0], outline[1] + outline[3] / 2 - getPixelSize() / 2, getPixelSize(), getPixelSize());
-        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(), outline[1], getPixelSize(), getPixelSize());
-        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(),
-                outline[1] - outline[3] - getPixelSize(), getPixelSize(), getPixelSize());
+    public void renderRhombusOutline(Graphics2D g2d, int[] outline, int[] color){
+        g2d.setColor(new Color(color[0], color[1], color[2], color[3]));
+        //g2d.fillRect(outline[0], outline[1], outline[2], outline[3]);
+
+        //TODO: Make connections and draw pixelated lines
+        //T-L
+        //T-R
+        //L-B
+        //R-B
+
+        //Left
+        g2d.fillRect(outline[0],
+                outline[1] + outline[3] / 2 - getPixelSize(), getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0],
+                outline[1] + outline[3] / 2, getPixelSize(), getPixelSize());
+        //Right
         g2d.fillRect(outline[0] + outline[2] - getPixelSize(),
-                outline[1] - outline[3] / 2 - getPixelSize(), getPixelSize(), getPixelSize());
+                outline[1] + outline[3] / 2 - getPixelSize(), getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] - getPixelSize(),
+                outline[1] + outline[3] / 2, getPixelSize(), getPixelSize());
+
+        //Top
+        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(),
+                outline[1], getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] / 2,
+                outline[1], getPixelSize(), getPixelSize());
+        //Bottom
+        g2d.fillRect(outline[0] + outline[2] / 2 - getPixelSize(),
+                outline[1] + outline[3] - getPixelSize(), getPixelSize(), getPixelSize());
+        g2d.fillRect(outline[0] + outline[2] / 2,
+                outline[1] + outline[3] - getPixelSize(), getPixelSize(), getPixelSize());
+    }
+
+    public void renderLine(Graphics2D g2d, int[] points, int[] color){
+
     }
 
     /*Getters and Setters*/

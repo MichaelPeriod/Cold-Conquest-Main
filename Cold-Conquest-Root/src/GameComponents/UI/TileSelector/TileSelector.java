@@ -2,6 +2,7 @@ package GameComponents.UI.TileSelector;
 
 import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.IDrawable;
+import GameComponents.SpriteRenderer;
 
 import java.awt.*;
 
@@ -24,10 +25,9 @@ public class TileSelector implements IDrawable {
         return selectedTile;
     }
 
-    //Draw sprite with the spriterenderer drawtileoutline and call it from tilemap
     @Override
     public void drawSprite(Graphics2D g2d) {
-        IDrawable.super.drawSprite(g2d);
+        SpriteRenderer.renderer().renderRhombusOutline(g2d, getSpriteBox(), new int[] {0, 0, 0, 255});
     }
 
     @Override

@@ -47,7 +47,7 @@ public class TileMap implements MouseMovementObserver {
         this.gw = _gw;
         this.pixelSize = SpriteRenderer.getPixelSize();
         this.tileBaseSize = new int[]{pixelSize * 32, pixelSize * 20};
-        this.tileBaseThinkness = 5 * pixelSize;
+        this.tileBaseThinkness = 4 * pixelSize;
         this.tileSize = new int[]{32, 32};
         tilemapSize = new int[] {mapSize, mapSize};
         startPoint = calculateStartPoint(mapSize);
@@ -105,6 +105,8 @@ public class TileMap implements MouseMovementObserver {
                 }
             }
         }
+
+        tileSelector.drawSprite(g);
     }
 
     /*Searialize Tiles*/
