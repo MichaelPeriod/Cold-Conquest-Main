@@ -6,35 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/base.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/base.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ice-sheet.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/ice-sheet.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ice-sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/ice-sheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-concreate.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-concreate.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-concreate.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-concreate.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-metal.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-metal.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-metal.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-metal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-oil.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-oil.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-oil.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-oil.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-water.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-water.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-water.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-water.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/lab.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/lab.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/lab.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lab.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/miner-base.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/miner-base.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/miner-base.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/miner-base.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/pole.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/pole.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/pole.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/pole.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ship-yard.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ship-yard.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/ship-yard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/solar-panels.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/solar-panels.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/solar-panels.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/storage-container-liquid.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/storage-container-liquid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/storage-container-solid.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/storage-container-solid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/storage-containers.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/storage-containers.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/UI/TileSelector/TileSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/UI/TileSelector/TileSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +105,7 @@
       <workItem from="1688493585622" duration="12000" />
       <workItem from="1689449614505" duration="8421000" />
       <workItem from="1689639691967" duration="2983000" />
+      <workItem from="1689727517367" duration="1736000" />
     </task>
     <servers />
   </component>

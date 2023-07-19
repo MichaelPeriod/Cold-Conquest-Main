@@ -103,14 +103,43 @@ public class SpriteRenderer {
 
     /*Sprite Shapes*/
     public void renderRhombusOutline(Graphics2D g2d, int[] outline, int[] color){
-        g2d.setColor(new Color(color[0], color[1], color[2], color[3]));
-        //g2d.fillRect(outline[0], outline[1], outline[2], outline[3]);
-
         //TODO: Make connections and draw pixelated lines
         //T-L
+        int[] topLeft = {
+                outline[0],
+                outline[1] + outline[3] / 2 - getPixelSize(),
+                outline[0] + outline[2] / 2 - getPixelSize(),
+                outline[1]
+        };
         //T-R
+        int[] topRight = {
+                outline[0] + outline[2] - getPixelSize(),
+                outline[1] + outline[3] / 2 - getPixelSize(),
+                outline[0] + outline[2] / 2,
+                outline[1]
+        };
         //L-B
+        int[] bottomLeft = {
+                outline[0],
+                outline[1] + outline[3] / 2,
+                outline[0] + outline[2] / 2 - getPixelSize(),
+                outline[1] + outline[3] - getPixelSize()
+        };
         //R-B
+        int[] bottomRight = {
+                outline[0] + outline[2] - getPixelSize(),
+                outline[1] + outline[3] / 2,
+                outline[0] + outline[2] / 2,
+                outline[1] + outline[3] - getPixelSize()
+        };
+
+        renderLine(g2d, topLeft, color);
+        renderLine(g2d, topRight, color);
+        renderLine(g2d, bottomLeft, color);
+        renderLine(g2d, bottomRight, color);
+
+        g2d.setColor(new Color(color[0], color[1], color[2], color[3]));
+        //g2d.fillRect(outline[0], outline[1], outline[2], outline[3]);
 
         //Left
         g2d.fillRect(outline[0],
@@ -136,7 +165,33 @@ public class SpriteRenderer {
     }
 
     public void renderLine(Graphics2D g2d, int[] points, int[] color){
+        g2d.setColor(Color.BLUE);
+        int[] point1 = new int[2];
+        int[] point2 = new int[2];
 
+        if(points[0] >= points[2]){
+            point1 = new int[]{points[0], points[1]};
+            point2 = new int[]{points[2], points[3]};
+        } else {
+            point2 = new int[]{points[0], points[1]};
+            point1 = new int[]{points[2], points[3]};
+        }
+
+        int[] travelingPoint = point1.clone();
+        float slope = (float)(point1[1] / point2[1]) / (point1[0] - point2[0]);
+        int currentSprint = 0;
+        while(travelingPoint[0] <= point2[0]){
+            g2d.fillRect(travelingPoint[0], travelingPoint[1], getPixelSize(), getPixelSize());
+            travelingPoint[0] += getPixelSize();
+            currentSprint += slope;
+            if (currentSprint >= 1){
+                travelingPoint[1] += Math.floor(currentSprint) * getPixelSize();
+                currentSprint -= Math.floor(currentSprint);
+            } else if (currentSprint <= -1){
+                travelingPoint[1] -= Math.ceil(currentSprint) * getPixelSize();
+                currentSprint -= Math.ceil(currentSprint);
+            }
+        }
     }
 
     /*Getters and Setters*/
