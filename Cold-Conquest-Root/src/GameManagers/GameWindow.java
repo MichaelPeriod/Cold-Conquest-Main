@@ -44,12 +44,13 @@ public class GameWindow extends JPanel implements Runnable {
         SpriteRenderer.renderer();
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
-        //tileMaps.get(0).FillIceSheet();
+        tileMaps.get(0).FillIceSheet();
         tileMaps.get(0).SetTile(new IceTile(), 0, 0);
 
         tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
+        tileMaps.get(1).enableTileSelector();
 
-        //addTiles();
+        addTiles();
 
         Thread gameThread = new Thread(this);
         gameThread.start();

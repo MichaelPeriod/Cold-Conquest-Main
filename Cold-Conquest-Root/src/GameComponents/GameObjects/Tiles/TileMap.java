@@ -31,9 +31,10 @@ public class TileMap implements MouseMovementObserver {
     /*Sub-objects*/
     public final Cords cords;
     private final InputManager inputManager;
-    private final TileSelector tileSelector;
+    private TileSelector tileSelector;
 
     /*Dynamic Variables*/
+    private Point previousTileSelected = new Point(0, 0);
     private Point tileSelected = new Point(0, 0);
     private Point mousePos = new Point(0, 0);
 
@@ -55,7 +56,6 @@ public class TileMap implements MouseMovementObserver {
         //Declare subclasses
         cords = new Cords(this);
         inputManager = InputManager.current();
-        tileSelector = new TileSelector(this);
 
         //Set variables
         tiles = new HashMap<>();
@@ -88,6 +88,10 @@ public class TileMap implements MouseMovementObserver {
         }
     }
 
+    public void enableTileSelector(){
+        tileSelector = new TileSelector(this);
+    }
+
     /*Render sprites*/
     public void DrawTiles(Graphics2D g){
         int rows = tilemapSize[1];
@@ -106,7 +110,8 @@ public class TileMap implements MouseMovementObserver {
             }
         }
 
-        tileSelector.drawSprite(g);
+        if(tileSelector != null)
+            tileSelector.drawSprite(g);
     }
 
     /*Searialize Tiles*/
@@ -152,7 +157,21 @@ public class TileMap implements MouseMovementObserver {
     }
 
     private void selectTile(Point pos){
+        previousTileSelected = tileSelected;
         tileSelected = cords.worldToMapCenter(pos);
         mousePos = pos;
+
+        if(tileSelector != null && !previousTileSelected.equals(tileSelected)) {
+            tileSelector.setSelectedTile(tileSelected);
+            TiledObject selectedTile = tiles.get(getTileKey(tileSelected.x, tileSelected.y));
+
+            if(selectedTile == null)
+                tileSelector.setSelectionSize(1);
+            else {
+                int tileWidth = selectedTile.getWidth() / tileSize[0];
+                tileSelector.setSelectionSize(tileWidth);
+                System.out.println("Tile selected " + selectedTile.getDimensions()[0]);
+            }
+        }
     }
 }

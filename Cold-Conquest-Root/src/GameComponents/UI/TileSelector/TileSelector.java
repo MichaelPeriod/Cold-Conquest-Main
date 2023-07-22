@@ -9,10 +9,13 @@ import java.awt.*;
 public class TileSelector implements IDrawable {
     private Point selectedTile;
     private final TileMap tm;
+    private final int[] defaultColor;
+    private int selectionSize = 1;
 
     public TileSelector(TileMap _tm){
         selectedTile = new Point(0, 0);
         tm = _tm;
+        defaultColor = new int[]{51, 136, 222, 255};
     }
 
 
@@ -27,17 +30,35 @@ public class TileSelector implements IDrawable {
 
     @Override
     public void drawSprite(Graphics2D g2d) {
-        SpriteRenderer.renderer().renderRhombusOutline(g2d, getSpriteBox(), new int[] {0, 0, 0, 255});
+        SpriteRenderer.renderer().renderRhombusOutline(g2d, getSpriteBox(), getColor());
     }
 
     @Override
     public int[] getSpriteBox() {
         int[] box = new int[4];
-        Point worldPos = tm.cords.mapToWorldCorner(selectedTile);
+        Point st = new Point(selectedTile);
+        st.translate(-selectionSize + 1, 0);
+        Point worldPos = new Point(0, 0);
+        worldPos.setLocation(tm.cords.mapToWorldCorner(st).x, 0);
+        st.translate(0, -selectionSize + 1);
+        worldPos.translate(0, tm.cords.mapToWorldCorner(st).y);
+
+        box[2] = tm.getTileBaseSize()[0] * selectionSize;
+        box[3] = (tm.getTileBaseSize()[1] - tm.getTileBaseThinkness()) * selectionSize;
         box[0] = worldPos.x;
         box[1] = worldPos.y;
-        box[2] = tm.getTileBaseSize()[0];
-        box[3] = tm.getTileBaseSize()[1] - tm.getTileBaseThinkness();
         return box;
+    }
+
+    public int[] getColor(){
+        return this.defaultColor;
+    }
+
+    public void setSelectionSize(int selectionSize) {
+        this.selectionSize = Math.max(selectionSize, 1);
+    }
+
+    public int getSelectionSize(){
+        return this.selectionSize;
     }
 }
