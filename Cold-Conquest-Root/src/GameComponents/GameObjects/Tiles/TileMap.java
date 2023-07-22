@@ -99,6 +99,9 @@ public class TileMap implements MouseMovementObserver {
 
         int maxSum = rows + columns - 2; // Maximum number of iterations needed
 
+        if(tileSelector != null)
+            tileSelector.drawSprite(g);
+
         for (int sum = 0; sum <= maxSum; sum++) {
             for (int i = 0; i <= sum; i++) {
                 int j = sum - i;
@@ -109,9 +112,6 @@ public class TileMap implements MouseMovementObserver {
                 }
             }
         }
-
-        if(tileSelector != null)
-            tileSelector.drawSprite(g);
     }
 
     /*Searialize Tiles*/
