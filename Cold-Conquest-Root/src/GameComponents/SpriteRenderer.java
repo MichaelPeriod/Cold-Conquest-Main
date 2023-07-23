@@ -10,12 +10,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SpriteRenderer {
-    private static SpriteRenderer renderer = null;
+    //TODO: Continue commenting from here on
+    //Declare constants
     private static final String spriteRoot = "res/";
-    private static int pixelSize = 4;
+    private static final int pixelSize = 4;
     private static final int DATA_PER_PIXEL = 4;
 
 
+    //Make into singleton
+    private static SpriteRenderer renderer = null;
     public static SpriteRenderer renderer(){
         if(renderer == null){
             renderer = new SpriteRenderer();
@@ -82,6 +85,7 @@ public class SpriteRenderer {
         return pixels;
     }
 
+    /*Draw Sprite*/
     public void drawSprite(Graphics2D g2d, BufferedImage sprite, int[] spriteBox){
         drawSprite(g2d, spriteToIntArray(sprite), spriteBox);
     }
@@ -101,7 +105,8 @@ public class SpriteRenderer {
         }
     }
 
-    /*Sprite Shapes*/
+    /*Pixelated Shapes*/
+    //Maybe change to sub-object?
     public void renderRhombusOutline(Graphics2D g2d, int[] outline, int[] color){
         //T-L
         int[] topLeft = {
@@ -177,7 +182,8 @@ public class SpriteRenderer {
 
         int[] travelingPoint = {(int)point1[0], (int)point1[1]};
         float slope = (point1[1] - point2[1]) / (point1[0] - point2[0]);
-        slope = Math.round(slope * 2f) / 2f;
+        final float roundingStrength = 4; //4 angle subsections possible
+        slope = Math.round(slope * roundingStrength) / roundingStrength;
         float currentSprint = 0;
         while(travelingPoint[0] <= point2[0]){
             g2d.fillRect(travelingPoint[0], travelingPoint[1], getPixelSize(), getPixelSize());
@@ -199,8 +205,7 @@ public class SpriteRenderer {
     public static int getPixelSize() {
         return pixelSize;
     }
-
-    public static void setPixelSize(int pixelSize) {
-        SpriteRenderer.pixelSize = pixelSize;
+    public static int getDataPerPixel(){
+        return DATA_PER_PIXEL;
     }
 }

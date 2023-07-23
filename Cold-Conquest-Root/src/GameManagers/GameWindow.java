@@ -1,7 +1,7 @@
 package GameManagers;
 
 import GameComponents.GameObjects.PixelObject;
-import GameComponents.GameObjects.Tiles.Indicators.ConcreateIndicator;
+import GameComponents.GameObjects.Tiles.Indicators.ConcreteIndicator;
 import GameComponents.GameObjects.Tiles.Indicators.MetalIndicator;
 import GameComponents.GameObjects.Tiles.Indicators.OilIndicator;
 import GameComponents.GameObjects.Tiles.Indicators.WaterIndicator;
@@ -13,7 +13,7 @@ import GameComponents.GameObjects.Tiles.Infrastructure.SolarPanel.SolarPanel;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerLiquid;
 import GameComponents.GameObjects.Tiles.Infrastructure.Storage.StorageContainerSolid;
 import GameComponents.GameObjects.Tiles.Landscape.IceTile;
-import GameComponents.GameObjects.Tiles.Pole;
+import GameComponents.GameObjects.Tiles.Indicators.Pole;
 import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.InputHandler.InputManager;
 import GameComponents.SpriteRenderer;
@@ -67,7 +67,7 @@ public class GameWindow extends JPanel implements Runnable {
         tileMaps.get(1).SetTile(new Base(), 3, 3);
         tileMaps.get(1).SetTile(new ShipYard(), 5, 3);
 
-        tileMaps.get(1).SetTile(new ConcreateIndicator(), 0, 5);
+        tileMaps.get(1).SetTile(new ConcreteIndicator(), 0, 5);
         tileMaps.get(1).SetTile(new WaterIndicator(), 1, 5);
         tileMaps.get(1).SetTile(new OilIndicator(), 2, 5);
         tileMaps.get(1).SetTile(new MetalIndicator(), 3, 5);

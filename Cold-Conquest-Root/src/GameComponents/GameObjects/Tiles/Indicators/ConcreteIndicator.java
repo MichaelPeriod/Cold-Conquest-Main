@@ -1,16 +1,15 @@
-package GameComponents.GameObjects.Tiles.Infrastructure.Lab;
+package GameComponents.GameObjects.Tiles.Indicators;
 
 import GameComponents.GameObjects.Tiles.TiledObject;
 
-public class Lab extends TiledObject {
+public class ConcreteIndicator extends TiledObject {
     /*Sprite Info*/
-    private static String fileLocation = "lab.png";
+    private static String fileLocation = "indicator-concrete.png";
     private static int[] spriteArray = null;
-    final private static int[] spriteDim = {64, 64};
-
+    final private static int[] spriteDim = {32, 32}; //Maybe able to remove?
 
     /*Initialize and load sprite when new one added*/
-    public Lab(){
+    public ConcreteIndicator(){
         if(spriteArray == null)
             loadSprite(fileLocation);
         setDimensions(spriteDim);

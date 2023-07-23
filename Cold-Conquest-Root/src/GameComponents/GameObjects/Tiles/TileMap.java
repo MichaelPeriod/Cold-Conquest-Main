@@ -22,7 +22,7 @@ public class TileMap implements MouseMovementObserver {
     private final int[] tileSize;
     private final int[] tilemapSize;
     private final GameWindow gw;
-    private final int pixelSize;
+    private final int pixelSize; //Gotten from sprite renderer
     private final static int DEFAULT_MAP_SIZE = 5;
 
     /*Tile finder*/
@@ -63,33 +63,32 @@ public class TileMap implements MouseMovementObserver {
     }
 
     /*Tile manipulation*/
+    public int getTileKey(Point pos){
+        return getTileKey(pos.x, pos.y);
+    }
+
+    public int getTileKey(int x, int y){
+        //Gets an interger to represent 2d tilemap
+        //Used because using point or int array would compare objects not values if used as key
+        return x + y * tilemapSize[0];
+    }
+
+    public TiledObject getTile(Point pos){
+        return tiles.get(getTileKey(pos));
+    }
+    public TiledObject getTile(int x, int y){
+        return tiles.get(getTileKey(x, y));
+    }
+
     public void SetTile(TiledObject obj, int x, int y){
         SetTile(obj, new Point(x, y));
     }
 
     public void SetTile(TiledObject obj, Point tilePos){
+        //Add the tile to tile hashmap
         tiles.put(getTileKey(tilePos.x, tilePos.y), obj);
+        //Set tile position in world
         getTile(tilePos.x, tilePos.y).setPos(cords.mapToWorld(tilePos));
-    }
-
-    public TiledObject getTile(int x, int y){
-        return tiles.get(getTileKey(x, y));
-    }
-
-    public int getTileKey(int x, int y){
-        return x + y * tilemapSize[0];
-    }
-
-    public void FillIceSheet(){
-        for(int i = 0; i < tilemapSize[1]; i++){
-            for(int j = 0; j < tilemapSize[0]; j++){
-                SetTile(new IceTile(), i, j);
-            }
-        }
-    }
-
-    public void enableTileSelector(){
-        tileSelector = new TileSelector(this);
     }
 
     /*Render sprites*/
@@ -114,7 +113,7 @@ public class TileMap implements MouseMovementObserver {
         }
     }
 
-    /*Searialize Tiles*/
+    /*Searialize Tilemap*/
     @Override
     public String toString(){
         String sBuilder = "";
@@ -125,9 +124,6 @@ public class TileMap implements MouseMovementObserver {
     }
 
     /*Getters and Setters*/
-    private Point calculateStartPoint(int mapSize){
-        return new Point(gw.screenWidth / 2, (gw.screenHeight - tileSize[1] - tileBaseThinkness) / 2);
-    }
 
     public int getPixelSize() {
         return pixelSize;
@@ -157,21 +153,44 @@ public class TileMap implements MouseMovementObserver {
     }
 
     private void selectTile(Point pos){
+        //Update tile selection
         previousTileSelected = tileSelected;
         tileSelected = cords.worldToMapCenter(pos);
+
+        //Hold mouse position
         mousePos = pos;
 
+        //If tile selector has changed tiles
         if(tileSelector != null && !previousTileSelected.equals(tileSelected)) {
+            //Update selected tile
             tileSelector.setSelectedTile(tileSelected);
             TiledObject selectedTile = tiles.get(getTileKey(tileSelected.x, tileSelected.y));
 
+            //Update selector size
             if(selectedTile == null)
                 tileSelector.setSelectionSize(1);
             else {
                 int tileWidth = selectedTile.getWidth() / tileSize[0];
                 tileSelector.setSelectionSize(tileWidth);
-                System.out.println("Tile selected " + selectedTile.getDimensions()[0]);
             }
         }
+    }
+
+    /*General Functions*/
+    public void FillIceSheet(){
+        for(int i = 0; i < tilemapSize[1]; i++){
+            for(int j = 0; j < tilemapSize[0]; j++){
+                SetTile(new IceTile(), i, j);
+            }
+        }
+    }
+
+    private Point calculateStartPoint(int mapSize){
+        //Currently set for near middle of screen but will need modification with moving camera
+        return new Point(gw.screenWidth / 2, (gw.screenHeight - tileSize[1] - tileBaseThinkness) / 2);
+    }
+
+    public void enableTileSelector(){
+        tileSelector = new TileSelector(this);
     }
 }
