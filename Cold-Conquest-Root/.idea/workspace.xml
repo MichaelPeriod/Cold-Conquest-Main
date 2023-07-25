@@ -6,35 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-concreate.ase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cold-Conquest-Root/indicator-concreate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-concreate.ase" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-concrete.ase" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/indicator-concreate.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/indicator-concrete.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/PixelObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/ConcreateIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/ConcreteIndicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/MetalIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/MetalIndicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/OilIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/OilIndicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/WaterIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/WaterIndicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Base/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Base/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Lab/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Lab/Lab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Miner/BaseMiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/ShipYard/ShipYard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/ShipYard/ShipYard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/SolarPanel/SolarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/SolarPanel/SolarPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerLiquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerLiquid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerSolid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Infrastructure/Storage/StorageContainerSolid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Landscape/IceTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Pole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/Indicators/Pole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TiledObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TiledObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/IDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/IDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputHandler/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/InputManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputHandler/KeyboardObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/KeyboardObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseButtonObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseButtonObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseMovementObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/MouseMovementObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManagers/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/MainRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +111,7 @@
       <workItem from="1689727517367" duration="1736000" />
       <workItem from="1690055969556" duration="8252000" />
       <workItem from="1690125335101" duration="5624000" />
+      <workItem from="1690248152221" duration="1778000" />
     </task>
     <servers />
   </component>
@@ -168,6 +144,11 @@
           <properties class="java.lang.ArithmeticException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GameComponents/SpriteRenderer.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

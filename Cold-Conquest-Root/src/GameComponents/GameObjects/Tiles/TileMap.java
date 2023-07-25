@@ -85,8 +85,12 @@ public class TileMap implements MouseMovementObserver {
     }
 
     public void SetTile(TiledObject obj, Point tilePos){
+        int tileKey = getTileKey(tilePos);
+        //Check if tile already is set and delete it
+        if(tiles.containsKey(tileKey))
+            tiles.remove(tileKey);
         //Add the tile to tile hashmap
-        tiles.put(getTileKey(tilePos.x, tilePos.y), obj);
+        tiles.put(tileKey, obj);
         //Set tile position in world
         getTile(tilePos.x, tilePos.y).setPos(cords.mapToWorld(tilePos));
     }

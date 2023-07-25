@@ -23,13 +23,17 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GameWindow extends JPanel implements Runnable {
+    //Declare window constants
     public final int screenWidth = 854;
     public final int screenHeight = 480;
     public final int FPS = 60;
+
+    //Store object collections
     ArrayList<TileMap> tileMaps = new ArrayList<>();
     ArrayList<PixelObject> unorganizedObjects = new ArrayList<>();
 
     public GameWindow(){
+        //Set up window on initialization
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(new Color(54, 197, 244));
         this.setDoubleBuffered(true);
@@ -40,23 +44,33 @@ public class GameWindow extends JPanel implements Runnable {
     }
 
     public void setup(){
+        //Setup the game
+
+        //Declare constants
         final int tileMapSize = 6;
+
+        //Initialize the sprite renderer
         SpriteRenderer.renderer();
 
+        //Create tilemap of ice sheet
         tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
         tileMaps.get(0).FillIceSheet();
-        tileMaps.get(0).SetTile(new IceTile(), 0, 0);
 
+        //Create objects tilemap
         tileMaps.add(new TileMap(tileMapSize,this)); // Main objects layer
         tileMaps.get(1).enableTileSelector();
 
+        //Temp: Add sample tiles to screen
         addTiles();
 
+        //Start the game on asynchronous thread
         Thread gameThread = new Thread(this);
         gameThread.start();
     }
 
     private void addTiles(){
+        //Set all tiles
+        //Once out of testing, need to delete all of these objects and references
         tileMaps.get(1).SetTile(new BaseMiner(), 0, 0);
         tileMaps.get(1).SetTile(new SolarPanel(), 1, 0);
         tileMaps.get(1).SetTile(new StorageContainerLiquid(), 2, 0);
@@ -74,13 +88,16 @@ public class GameWindow extends JPanel implements Runnable {
     }
 
     public void paint(Graphics g) {
+        //Draw window and create 2d drawing plane
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        //Draw all tiles
         for(TileMap m : tileMaps){
             m.DrawTiles(g2d);
         }
 
+        //Draw any unorganized object
         for(PixelObject o : unorganizedObjects){
             o.drawSprite(g2d);
         }
@@ -88,21 +105,24 @@ public class GameWindow extends JPanel implements Runnable {
 
     @Override
     public void run(){
-        double drawInterval = 1000000000/(float)FPS;
+        //Declare variables
+        final double drawInterval = 1000000000/(float)FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
         long timer;
 
         while(true){
+            //Get time
             currentTime = System.nanoTime();
 
+            //Figure out if time is past new frame time
             timer = currentTime - lastTime;
             delta += timer / drawInterval;
             lastTime = currentTime;
-
             if(delta <= 1) continue;
 
+            //Draw frame and restart time till next frame
             repaint();
             delta--;
         }
