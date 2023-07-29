@@ -1,5 +1,6 @@
 package Utilities;
 
+import GameComponents.Camera.GameCamera;
 import GameComponents.GameObjects.Tiles.TileMap;
 
 import java.awt.*;
@@ -41,7 +42,7 @@ public class Cords {
     //Takes the world cords and offsets it to the top left corner
     public Point mapToWorldCorner(Point pos){
         Point toReturn = mapToWorld(pos);
-        return worldCornerOffset(toReturn);
+        return worldToCornerOffset(toReturn);
     }
 
     //Moves the tile selection to the center of the tile
@@ -87,7 +88,7 @@ public class Cords {
 
     //Gets the nearest tile corner
     public Point worldToMapCorner(Point pos){
-        return worldToMap(worldCornerOffset(pos));
+        return worldToMap(worldToCornerOffset(pos));
     }
 
     //Gets the nearest tile center
@@ -95,9 +96,49 @@ public class Cords {
         return worldToMap(worldToCenterOffset(pos));
     }
 
+    /*Camera to world*/
+    public Point cameraToWorld(Point pos){
+        Point camPos = GameCamera.camera().getCameraPosition();
+        Point toReturn = new Point(pos.x + camPos.x, pos.y + camPos.y);
+        return toReturn;
+    }
+
+    /*Camera to map*/
+    public Point cameraToMap(Point pos){
+        return worldToMap(cameraToWorld(pos));
+    }
+
+    public Point cameraToMapCenter(Point pos){
+        return worldToMapCenter(cameraToWorld(pos));
+    }
+
+    public Point cameraToMapCorner(Point pos){
+        return worldToMapCorner(cameraToWorld(pos));
+    }
+
+    /*World to camera*/
+    public Point worldToCamera(Point pos){
+        Point camPos = GameCamera.camera().getCameraPosition();
+        Point toReturn = new Point(pos.x - camPos.x, pos.y - camPos.y);
+        return toReturn;
+    }
+
+    /*Map to camera*/
+    public Point mapToCamera(Point pos){
+        return worldToCamera(mapToWorld(pos));
+    }
+
+    public Point mapToCameraCenter(Point pos){
+        return worldToCenterOffset(mapToCamera(pos));
+    }
+
+    public Point mapToCameraCorner(Point pos){
+        return worldToCornerOffset(mapToCamera(pos));
+    }
+
     /*Util*/
     //Offsets cords to corner
-    private Point worldCornerOffset(Point pos){
+    private Point worldToCornerOffset(Point pos){
         Point toReturn = pos;
         toReturn.x -= tm.getTileBaseSize()[0] / 2;
         toReturn.y -= tm.getTileBaseSize()[1];

@@ -159,7 +159,7 @@ public class TileMap implements MouseMovementObserver {
     private void selectTile(Point pos){
         //Update tile selection
         previousTileSelected = tileSelected;
-        tileSelected = cords.worldToMapCenter(pos);
+        tileSelected = cords.cameraToMapCenter(pos);
 
         //Hold mouse position
         mousePos = pos;

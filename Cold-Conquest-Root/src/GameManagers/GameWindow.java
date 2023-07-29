@@ -1,5 +1,6 @@
 package GameManagers;
 
+import GameComponents.Camera.GameCamera;
 import GameComponents.GameObjects.PixelObject;
 import GameComponents.GameObjects.Tiles.Indicators.ConcreteIndicator;
 import GameComponents.GameObjects.Tiles.Indicators.MetalIndicator;
@@ -16,21 +17,27 @@ import GameComponents.GameObjects.Tiles.Landscape.IceTile;
 import GameComponents.GameObjects.Tiles.Indicators.Pole;
 import GameComponents.GameObjects.Tiles.TileMap;
 import GameComponents.InputHandler.InputManager;
+import GameComponents.InputHandler.MouseButtonObserver;
+import GameComponents.InputHandler.MouseMovementObserver;
 import GameComponents.SpriteRenderer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GameWindow extends JPanel implements Runnable {
+public class GameWindow extends JPanel implements Runnable, MouseMovementObserver {
     //Declare window constants
     public final int screenWidth = 854;
     public final int screenHeight = 480;
     public final int FPS = 60;
+    public final float mouseSensitivity = 1f;
 
     //Store object collections
     ArrayList<TileMap> tileMaps = new ArrayList<>();
     ArrayList<PixelObject> unorganizedObjects = new ArrayList<>();
+
+    //Camera info
+    private static InputManager input;
 
     public GameWindow(){
         //Set up window on initialization
@@ -49,8 +56,10 @@ public class GameWindow extends JPanel implements Runnable {
         //Declare constants
         final int tileMapSize = 6;
 
-        //Initialize the sprite renderer
+        //Initialize the statics
         SpriteRenderer.renderer();
+        GameCamera.camera();
+        InputManager.current().addMouseMoveListener(this);
 
         //Create tilemap of ice sheet
         tileMaps.add(new TileMap(tileMapSize,this)); // Ice sheet
@@ -111,6 +120,7 @@ public class GameWindow extends JPanel implements Runnable {
         long lastTime = System.nanoTime();
         long currentTime;
         long timer;
+        int totalFrames = 0;
 
         while(true){
             //Get time
@@ -125,6 +135,23 @@ public class GameWindow extends JPanel implements Runnable {
             //Draw frame and restart time till next frame
             repaint();
             delta--;
+            totalFrames++;
+        }
+    }
+
+    @Override
+    public void onMouseMove(Point pos) {
+
+    }
+
+    @Override
+    public void onMouseDelta(Point lastPos, Point currPos) {
+        Point calcDelta = new Point(Math.round((currPos.x - lastPos.x) * mouseSensitivity),
+                Math.round((currPos.y - lastPos.y) * mouseSensitivity));
+        //System.out.println(calcDelta.toString());
+
+        if(InputManager.current().getMouseDown(0)){
+            GameCamera.camera().moveCamera(calcDelta);
         }
     }
 }

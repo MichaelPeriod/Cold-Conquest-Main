@@ -38,15 +38,15 @@ public class TileSelector implements IDrawable {
         int[] box = new int[4];
         Point st = new Point(selectedTile);
         st.translate(-selectionSize + 1, 0);
-        Point worldPos = new Point(0, 0);
-        worldPos.setLocation(tm.cords.mapToWorldCorner(st).x, 0);
+        Point camPos = new Point(0, 0);
+        camPos.setLocation(tm.cords.mapToCameraCorner(st).x, 0);
         st.translate(0, -selectionSize + 1);
-        worldPos.translate(0, tm.cords.mapToWorldCorner(st).y);
+        camPos.translate(0, tm.cords.mapToCameraCorner(st).y);
 
         box[2] = tm.getTileBaseSize()[0] * selectionSize;
         box[3] = (tm.getTileBaseSize()[1] - tm.getTileBaseThinkness()) * selectionSize;
-        box[0] = worldPos.x;
-        box[1] = worldPos.y;
+        box[0] = camPos.x;
+        box[1] = camPos.y;
         return box;
     }
 

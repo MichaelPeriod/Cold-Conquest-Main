@@ -170,6 +170,15 @@ public class InputManager implements KeyListener, MouseListener, MouseMotionList
         }
     }
 
+    //Getters
+    public boolean getMouseDown(int button){
+        return mouseDown[button];
+    }
+
+    public boolean[] getMouseDown() {
+        return mouseDown;
+    }
+
     /*Mouse Movement Manager*/
     private ArrayList<MouseMovementObserver> mouseMovementObservers;
 
