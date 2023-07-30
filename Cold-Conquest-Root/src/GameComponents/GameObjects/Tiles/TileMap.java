@@ -26,7 +26,8 @@ public class TileMap implements MouseMovementObserver {
     private final static int DEFAULT_MAP_SIZE = 5;
 
     /*Tile finder*/
-    private final HashMap<Integer, TiledObject> tiles;
+    private HashMap<Integer, TiledObject> tiles;
+    private HashMap<Integer, Integer> tilePointers; //TODO: Build out tilos auto pointing to the base of themselves
 
     /*Sub-objects*/
     public final Cords cords;

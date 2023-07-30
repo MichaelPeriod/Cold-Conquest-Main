@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf5b8372-1e3e-4659-ae79-0676da2addf0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GameComponents/Camera/GameCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TileMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/IDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/IDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/InputHandler/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/InputHandler/InputManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameComponents/UI/TileSelector/TileSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/UI/TileSelector/TileSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TiledObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameComponents/GameObjects/Tiles/TiledObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManagers/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilities/Cords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities/Cords.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +112,7 @@
       <workItem from="1690125335101" duration="5624000" />
       <workItem from="1690248152221" duration="1778000" />
       <workItem from="1690667561593" duration="6047000" />
+      <workItem from="1690736422902" duration="1407000" />
     </task>
     <servers />
   </component>

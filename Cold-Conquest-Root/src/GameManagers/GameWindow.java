@@ -148,9 +148,8 @@ public class GameWindow extends JPanel implements Runnable, MouseMovementObserve
     public void onMouseDelta(Point lastPos, Point currPos) {
         Point calcDelta = new Point(Math.round((currPos.x - lastPos.x) * mouseSensitivity),
                 Math.round((currPos.y - lastPos.y) * mouseSensitivity));
-        //System.out.println(calcDelta.toString());
 
-        if(InputManager.current().getMouseDown(0)){
+        if(InputManager.current().getMouseDown(2)){
             GameCamera.camera().moveCamera(calcDelta);
         }
     }
